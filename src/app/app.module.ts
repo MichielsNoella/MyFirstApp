@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {ShoppingModule} from './shopping/shopping.module';
+import {ShoppingAddComponent} from './shopping/shopping-add/shopping-add.component';
 
 @NgModule({
   declarations: [
@@ -11,6 +13,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule
+    // ShoppingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
