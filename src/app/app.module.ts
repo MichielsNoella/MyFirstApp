@@ -13,7 +13,6 @@ import {ShoppingAddComponent} from './shopping/shopping-add/shopping-add.compone
   imports: [
     BrowserModule,
     AppRoutingModule
-    // ShoppingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

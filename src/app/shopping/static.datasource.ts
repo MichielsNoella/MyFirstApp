@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
-// import {Product} from './product.model';
 import {from, Observable} from 'rxjs';
-// import {Order} from './order.model';
 import {Shopping} from './shopping.model';
 import {root} from 'rxjs/internal-compatibility';
 

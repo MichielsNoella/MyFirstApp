@@ -8,8 +8,6 @@ const routes: Routes = [
   },
   {path: '**', redirectTo: '/shopping/list'}
 
-  // {path: 'list', component: ShoppingListComponent},
-  // {path: 'add', component: ShoppingAddComponent},
 ];
 
 @NgModule({
