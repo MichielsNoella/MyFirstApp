@@ -19,6 +19,11 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnInit() {
     this.service.getShopping().subscribe(res => this.shoppings = res);
+    // this.service.getShopping().subscribe(res => this.shoppings = res.filter(item => !item.done));
   }
-
+  getTodoItems() {
+    // return this.shoppings;
+    return this.shoppings.filter(item => !item.done);
+    // return this.model.items; // geeft de waarde terug
+  }
 }
