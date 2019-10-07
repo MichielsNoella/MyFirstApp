@@ -36,11 +36,9 @@ export class StaticDataSource {
 
   addTitle(shopping: string, amount: number) {
     this.toDoList.push({
-      // title: title,
       isChecked: false,
       shoppingName: shopping,
       amounts: amount
-
     });
   }
 
