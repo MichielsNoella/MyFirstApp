@@ -33,7 +33,7 @@ export class ShoppingListComponent implements OnInit {
         this.toDoListArray = [];
         item.forEach(element => {
           const x = element.payload.toJSON();
-          x['$key'] = element.key;
+          x[`$key`] = element.key;
           this.toDoListArray.push(x);
         });
 

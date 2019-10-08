@@ -12,8 +12,8 @@
 
     amount : &nbsp;<input type="text" class="form-control" #itemAmount>&nbsp;
 
-<!--    Date : &nbsp;<ejs-datepicker id='datepicker' placeholder='Select a date' [value]='dateValue' [min]='minDate' [max]='maxDate'></ejs-datepicker>-->
-    <ejs-datepicker id='datepicker' placeholder='Select a date' #itemDate format ='dd-MM-yyyy'></ejs-datepicker>
+    <!--    Date : &nbsp;<ejs-datepicker id='datepicker' placeholder='Select a date' [value]='dateValue' [min]='minDate' [max]='maxDate'></ejs-datepicker>-->
+    <ejs-datepicker id='datepicker' placeholder='Select a date' #itemDate format='dd-MM-yyyy'></ejs-datepicker>
 
     <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle, itemAmount, itemDate)">
       <i class="fa fa-plus-circle fa-2x"></i>
@@ -21,26 +21,57 @@
   </div>
 </table>
 
-<table class="table table-striped table-bordered col-3">
+<table class="table table-striped table-hover">
   <thead>
   <tr>
     <th>Expenses</th>
   </tr>
+  <div class="row">
+    <div class="col-1">Checked</div>
+    <div class="col-3">Description</div>
+    <div class="col-2">Amount</div>
+    <div class="col-2">Date</div>
+    <div class="col-4" align="right">Delete</div>
+  </div>
   </thead>
 
-  <div style="margin:5px 0px">
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let item of toDoListArray">
-      <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
-        <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
-      </span>
-        {{item.shoppingName}}&nbsp; {{item.amountInput}} {{item.dateInput}}
+  <li class="list-group-item" *ngFor="let item of toDoListArray">
+    <div class="row">
+      <div class="col-1">
+        <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
+          <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+        </span>
+      </div>
+      <div class="col-3">
+        {{item.purchaseDescription}}
+      </div>
+      <div class="col-2">
+        {{item.purchaseAmount}}
+      </div>
+      <div class="col-2">
+        {{item.purchaseDate}}
+      </div>
+      <div class="col-4">
         <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
-        <i class="fa fa-trash-o fa-lg"></i>
-      </span>
-      </li>
-    </ul>
-  </div>
+           <i class="fa fa-trash-o fa-lg"></i>
+         </span>
+      </div>
+    </div>
+  </li>
+
+  <!--  <div style="margin:5px 0px">-->
+  <!--    <ul class="list-group">-->
+  <!--      <li class="list-group-item" *ngFor="let item of toDoListArray">-->
+  <!--      <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">-->
+  <!--        <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>-->
+  <!--      </span>-->
+  <!--        {{item.description}}&nbsp; {{item.purchaseAmount}} {{item.purchaseDate}}-->
+  <!--        <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">-->
+  <!--        <i class="fa fa-trash-o fa-lg"></i>-->
+  <!--      </span>-->
+  <!--      </li>-->
+  <!--    </ul>-->
+  <!--  </div>-->
 
 </table>
 

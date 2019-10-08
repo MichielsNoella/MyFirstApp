@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {root} from 'rxjs/internal-compatibility';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import {DatePipe} from '@angular/common';
+import {Shopping} from './shopping.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StaticDataSource {
-  toDoList: AngularFireList<any>;
+  toDoList: AngularFireList<Shopping>;
 
-  constructor(private firebasedb: AngularFireDatabase, private datePipe: DatePipe) {
+  constructor(private firebasedb: AngularFireDatabase) {
   }
 
 
@@ -40,9 +40,9 @@ export class StaticDataSource {
 
     this.toDoList.push({
       isChecked: false,
-      shoppingName: shopping,
-      amountInput: amount,
-      dateInput: this.formDate(date)
+      purchaseDescription: shopping,
+      purchaseAmount: amount,
+      purchaseDate: this.formDate(date)
     });
   }
 
@@ -50,7 +50,7 @@ export class StaticDataSource {
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    return `${year}-${month}-${day}`;
+    return `${day}-${month}-${year}`;
   }
 
   checkOrUnCheckTitle($key: string, flag: boolean) {

@@ -3,10 +3,10 @@ import {EnumValue} from '@angular/compiler-cli/src/ngtsc/metadata';
 export class Shopping {
   constructor(
     public id?: number,
-    public description?: string,
-    public amount?: number,
-    public done?: boolean
-  //   public date?: Date
+    public purchaseDescription?: string,
+    public purchaseAmount?: number,
+    public isChecked?: boolean,
+    public purchaseDate?: string
   // public genre?: EnumValue
   ) {
   }
