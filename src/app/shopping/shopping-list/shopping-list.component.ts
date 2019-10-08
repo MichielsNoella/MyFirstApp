@@ -44,10 +44,11 @@ export class ShoppingListComponent implements OnInit {
       });
   }
 
-  onAdd(itemTitle, itemAmount) {
-    this.service.addTitle(itemTitle.value, itemAmount.value);
+  onAdd(itemTitle, itemAmount, itemDate) {
+    this.service.addTitle(itemTitle.value, itemAmount.value, itemDate.value);
     itemTitle.value = null;
     itemAmount.value = null;
+    itemDate.value = null;
   }
 
   alterCheck($key: string, isChecked) {

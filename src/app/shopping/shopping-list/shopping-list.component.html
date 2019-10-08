@@ -8,9 +8,14 @@
   </thead>
 
   <div class="input-group">
-    market : &nbsp;<input type="text" class="form-control" #itemTitle>&nbsp;
+    market : &nbsp;<input type="text" class="form-control" required #itemTitle>&nbsp;
+
     amount : &nbsp;<input type="text" class="form-control" #itemAmount>&nbsp;
-    <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle, itemAmount)">
+
+<!--    Date : &nbsp;<ejs-datepicker id='datepicker' placeholder='Select a date' [value]='dateValue' [min]='minDate' [max]='maxDate'></ejs-datepicker>-->
+    <ejs-datepicker id='datepicker' placeholder='Select a date' #itemDate format ='dd-MM-yyyy'></ejs-datepicker>
+
+    <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle, itemAmount, itemDate)">
       <i class="fa fa-plus-circle fa-2x"></i>
     </div>
   </div>
@@ -29,7 +34,7 @@
       <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
         <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
       </span>
-        {{item.shoppingName}}&nbsp; {{item.amounts}}
+        {{item.shoppingName}}&nbsp; {{item.amountInput}} {{item.dateInput}}
         <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
         <i class="fa fa-trash-o fa-lg"></i>
       </span>
