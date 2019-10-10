@@ -7,7 +7,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
 import {environment} from '../environments/environment';
-import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,8 @@ import {DatePipe} from '@angular/common';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
       ],
-  providers: [DatePipe],
+
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
