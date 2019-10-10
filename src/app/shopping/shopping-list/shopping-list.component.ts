@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Shopping} from '../shopping.model';
 import {StaticDataSource} from '../static.datasource';
 
 @Component({
@@ -8,7 +7,8 @@ import {StaticDataSource} from '../static.datasource';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-  toDoListArray: any[];
+  shoppingListArray: any[];
+
   // shoppings: Shopping[];
 
   constructor(
@@ -16,46 +16,29 @@ export class ShoppingListComponent implements OnInit {
   ) {
   }
 
-  // ngOnInit() {
-  //   this.service.getShopping().subscribe(res => this.shoppings = res);
-  //   // this.service.getShopping().subscribe(res => this.shoppings = res.filter(item => !item.done));
-  // }
-  //
-  // getTodoItems() {
-  //   // return this.shoppings;
-  //   return this.shoppings.filter(item => !item.done);
-  //   // return this.model.items; // geeft de waarde terug
-  // }
-
   ngOnInit() {
-    this.service.getToDoList().snapshotChanges()
+    this.service.getShoppingList().snapshotChanges()
       .subscribe(item => {
-        this.toDoListArray = [];
+        this.shoppingListArray = [];
         item.forEach(element => {
           const x = element.payload.toJSON();
           x[`$key`] = element.key;
-          this.toDoListArray.push(x);
+          this.shoppingListArray.push(x);
         });
 
         // sort array isChecked false  -> true
-        this.toDoListArray.sort((a, b) => {
+        this.shoppingListArray.sort((a, b) => {
           return a.isChecked - b.isChecked;
         });
       });
   }
 
-  onAdd(itemTitle, itemAmount, itemDate) {
-    this.service.addTitle(itemTitle.value, itemAmount.value, itemDate.value);
-    itemTitle.value = null;
-    itemAmount.value = null;
-    itemDate.value = null;
-  }
 
   alterCheck($key: string, isChecked) {
     this.service.checkOrUnCheckTitle($key, !isChecked);
   }
 
   onDelete($key: string) {
-    this.service.removeTitle($key);
+    this.service.removeShopping($key);
   }
 }

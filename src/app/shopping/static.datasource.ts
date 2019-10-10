@@ -7,38 +7,18 @@ import {Shopping} from './shopping.model';
   providedIn: 'root'
 })
 export class StaticDataSource {
-  toDoList: AngularFireList<Shopping>;
+  shoppingList: AngularFireList<Shopping>;
 
   constructor(private firebasedb: AngularFireDatabase) {
   }
 
-
-  // private shopping: Shopping[] = [
-  //   new Shopping(1, 'AA', 25, false),
-  //   new Shopping(2, 'AB', 75, false),
-  //   new Shopping(2, 'AB', 75, true)
-  // ];
-
-  // getShopping(): Observable<Shopping[]> {
-  //   return from([this.shopping]);
-  //   // return from([this.shopping]).pipe(
-  //   //   map(res => res.filter(p => !p.done))
-  //   // );
-  // }
-
-  // getShoppingd(): Observable<Shopping[]> {
-  //   return from([this.shopping]);
-  // }
-
-  getToDoList() {
-    this.toDoList = this.firebasedb.list('shoppings');
-    return this.toDoList;
+  getShoppingList() {
+    this.shoppingList = this.firebasedb.list('shoppings');
+    return this.shoppingList;
   }
 
-  addTitle(shopping: string, amount: number, date: Date) {
-
-
-    this.toDoList.push({
+  addNewExpense(shopping: string, amount: number, date: Date) {
+    this.shoppingList.push({
       isChecked: false,
       purchaseDescription: shopping,
       purchaseAmount: amount,
@@ -54,16 +34,10 @@ export class StaticDataSource {
   }
 
   checkOrUnCheckTitle($key: string, flag: boolean) {
-    this.toDoList.update($key, {isChecked: flag});
+    this.shoppingList.update($key, {isChecked: flag});
   }
 
-  removeTitle($key: string) {
-    this.toDoList.remove($key);
+  removeShopping($key: string) {
+    this.shoppingList.remove($key);
   }
-
-  //
-  // saveOrder(order: Order): Observable<Order> {
-  //   console.log(JSON.stringify(order));
-  //   return from([order]);
-  // }
 }

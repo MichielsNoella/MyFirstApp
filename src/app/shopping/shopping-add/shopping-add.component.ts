@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {StaticDataSource} from '../static.datasource';
 
 @Component({
   selector: 'app-shopping-add',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: StaticDataSource
+  ) { }
 
   ngOnInit() {
   }
 
+  onAdd(itemTitle, itemAmount, itemDate) {
+    this.service.addNewExpense(itemTitle.value, itemAmount.value, itemDate.value);
+    itemTitle.value = null;
+    itemAmount.value = null;
+    itemDate.value = null;
+  }
 }
