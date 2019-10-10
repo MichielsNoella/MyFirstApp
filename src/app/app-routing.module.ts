@@ -6,7 +6,7 @@ const routes: Routes = [
     path: 'shopping',
     loadChildren: './shopping/shopping.module#ShoppingModule'
   },
-  {path: '**', redirectTo: '/shopping/list'}
+  {path: '**', redirectTo: '/shopping/page'}
 
 ];
 

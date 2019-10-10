@@ -5,9 +5,10 @@ import { ShoppingAddComponent } from './shopping-add/shopping-add.component';
 import {ShoppingRoutingModule} from './shopping-routing.module';
 import {FormsModule} from '@angular/forms';
 import {DatePickerModule} from '@syncfusion/ej2-angular-calendars';
+import { ShoppingPageComponent } from './shopping-page/shopping-page.component';
 
 @NgModule({
-  declarations: [ShoppingListComponent, ShoppingAddComponent],
+  declarations: [ShoppingListComponent, ShoppingAddComponent, ShoppingPageComponent],
   imports: [
     CommonModule,
     ShoppingRoutingModule,

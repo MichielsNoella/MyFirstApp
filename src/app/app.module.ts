@@ -5,7 +5,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {environment} from '../environments/environment';
 
 @NgModule({
@@ -17,7 +17,8 @@ import {environment} from '../environments/environment';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ReactiveFormsModule
       ],
 
   providers: [],
