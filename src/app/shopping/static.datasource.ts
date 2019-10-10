@@ -18,12 +18,8 @@ export class StaticDataSource {
     return this.shoppings$;
   }
 
-  addNewExpense(shopping: string, amount: number, date: Date) {
-    this.shoppings$.push({
-      purchaseDescription: shopping,
-      purchaseAmount: amount,
-      purchaseDate: this.formDate(date)
-    });
+  addNewExpense(value: any) {
+    this.shoppings$.push(value);
   }
 
   formDate(date: Date) {
@@ -36,4 +32,5 @@ export class StaticDataSource {
   removeShopping(id: string) {
     this.shoppings$.remove(id);
   }
+
 }

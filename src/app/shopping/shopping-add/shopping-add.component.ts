@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-shopping-add',
@@ -8,17 +9,21 @@ import {StaticDataSource} from '../static.datasource';
 })
 export class ShoppingAddComponent implements OnInit {
 
+  addNewExpenseForm = new FormGroup({
+    purchaseDescription: new FormControl(''),
+    purchaseAmount: new FormControl(''),
+  });
+
   constructor(
     private service: StaticDataSource
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
 
-  onAdd(itemTitle, itemAmount, itemDate) {
-    this.service.addNewExpense(itemTitle.value, itemAmount.value, itemDate.value);
-    itemTitle.value = null;
-    itemAmount.value = null;
-    itemDate.value = null;
+  onSubmit() {
+    this.service.addNewExpense(this.addNewExpenseForm.value);
   }
+
 }
