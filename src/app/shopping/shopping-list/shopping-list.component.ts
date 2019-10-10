@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
+import {Shopping} from '../shopping.model';
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,9 +8,8 @@ import {StaticDataSource} from '../static.datasource';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-  shoppingListArray: any[];
 
-  // shoppings: Shopping[];
+  shoppings: Shopping[];
 
   constructor(
     private service: StaticDataSource
@@ -19,26 +19,16 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit() {
     this.service.getShoppingList().snapshotChanges()
       .subscribe(item => {
-        this.shoppingListArray = [];
+        this.shoppings = [];
         item.forEach(element => {
           const x = element.payload.toJSON();
-          x[`$key`] = element.key;
-          this.shoppingListArray.push(x);
-        });
-
-        // sort array isChecked false  -> true
-        this.shoppingListArray.sort((a, b) => {
-          return a.isChecked - b.isChecked;
+          x[`id`] = element.key;
+          this.shoppings.push(x);
         });
       });
   }
 
-
-  alterCheck($key: string, isChecked) {
-    this.service.checkOrUnCheckTitle($key, !isChecked);
-  }
-
-  onDelete($key: string) {
-    this.service.removeShopping($key);
+  onDelete(id: string) {
+    this.service.removeShopping(id);
   }
 }

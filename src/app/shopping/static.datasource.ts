@@ -7,19 +7,19 @@ import {Shopping} from './shopping.model';
   providedIn: 'root'
 })
 export class StaticDataSource {
-  shoppingList: AngularFireList<Shopping>;
+
+  shoppings$: AngularFireList<Shopping>;
 
   constructor(private firebasedb: AngularFireDatabase) {
+    this.shoppings$ = this.firebasedb.list('shoppings');
   }
 
   getShoppingList() {
-    this.shoppingList = this.firebasedb.list('shoppings');
-    return this.shoppingList;
+    return this.shoppings$;
   }
 
   addNewExpense(shopping: string, amount: number, date: Date) {
-    this.shoppingList.push({
-      isChecked: false,
+    this.shoppings$.push({
       purchaseDescription: shopping,
       purchaseAmount: amount,
       purchaseDate: this.formDate(date)
@@ -33,11 +33,7 @@ export class StaticDataSource {
     return `${day}-${month}-${year}`;
   }
 
-  checkOrUnCheckTitle($key: string, flag: boolean) {
-    this.shoppingList.update($key, {isChecked: flag});
-  }
-
-  removeShopping($key: string) {
-    this.shoppingList.remove($key);
+  removeShopping(id: string) {
+    this.shoppings$.remove(id);
   }
 }

@@ -4,7 +4,6 @@
     <th>Expenses</th>
   </tr>
   <div class="row">
-    <div class="col-1">Checked</div>
     <div class="col-3">Description</div>
     <div class="col-2">Amount</div>
     <div class="col-2">Date</div>
@@ -12,13 +11,8 @@
   </div>
   </thead>
 
-  <li class="list-group-item" *ngFor="let item of shoppingListArray">
+  <li class="list-group-item" *ngFor="let item of shoppings">
     <div class="row">
-      <div class="col-1">
-        <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key, item.isChecked)">
-          <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
-        </span>
-      </div>
       <div class="col-3">
         {{item.purchaseDescription}}
       </div>
@@ -29,7 +23,7 @@
         {{item.purchaseDate}}
       </div>
       <div class="col-4">
-        <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+        <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.id)">
            <i class="fa fa-trash-o fa-lg"></i>
          </span>
       </div>
