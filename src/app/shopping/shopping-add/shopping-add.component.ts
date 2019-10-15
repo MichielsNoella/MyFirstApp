@@ -12,6 +12,7 @@ export class ShoppingAddComponent implements OnInit {
   addNewExpenseForm = new FormGroup({
     purchaseDescription: new FormControl(''),
     purchaseAmount: new FormControl(''),
+    purchaseDate: new FormControl()
   });
 
   constructor(
@@ -23,6 +24,9 @@ export class ShoppingAddComponent implements OnInit {
   }
 
   onSubmit() {
+    const d = this.addNewExpenseForm.controls.purchaseDate.value;
+    this.addNewExpenseForm.controls.purchaseDate.setValue(d.year + '-' + d.month + '-' + d.day);
+    // console.log(this.addNewExpenseForm.controls.purchaseDate.value);
     this.service.addNewExpense(this.addNewExpenseForm.value);
   }
 

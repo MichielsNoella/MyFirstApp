@@ -10,34 +10,40 @@
     <input type="text" formControlName="purchaseAmount">
   </label>
 
+  <div class="input-group">
+    date:
+    <input class="form-control" placeholder="yyyy-mm-dd" formControlName="purchaseDate"
+           name="dp" ngbDatepicker #d="ngbDatepicker">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!addNewExpenseForm.valid">Submit</button>
+
+</form>
 
 
-    <button type="submit" [disabled]="!addNewExpenseForm.valid">Submit</button>
+<!--  <table class="table table-striped table-bordered col-3">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>NEW</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
 
-  </form>
+<!--    <div class="input-group">-->
+<!--      market : &nbsp;<input type="text" class="form-control" required #itemTitle>&nbsp;-->
 
+<!--      amount : &nbsp;<input type="text" class="form-control" #itemAmount>&nbsp;-->
 
-  <!--  <table class="table table-striped table-bordered col-3">-->
-  <!--    <thead>-->
-  <!--    <tr>-->
-  <!--      <th>NEW</th>-->
-  <!--    </tr>-->
-  <!--    </thead>-->
+<!--      &lt;!&ndash;    Date : &nbsp;<ejs-datepicker id='datepicker' placeholder='Select a date' [value]='dateValue' [min]='minDate' [max]='maxDate'></ejs-datepicker>&ndash;&gt;-->
+<!--      <ejs-datepicker id='datepicker' placeholder='Select a date' #itemDate format='dd-MM-yyyy'></ejs-datepicker>-->
 
-  <!--    <div class="input-group">-->
-  <!--      market : &nbsp;<input type="text" class="form-control" required #itemTitle>&nbsp;-->
-
-  <!--      amount : &nbsp;<input type="text" class="form-control" #itemAmount>&nbsp;-->
-
-  <!--      &lt;!&ndash;    Date : &nbsp;<ejs-datepicker id='datepicker' placeholder='Select a date' [value]='dateValue' [min]='minDate' [max]='maxDate'></ejs-datepicker>&ndash;&gt;-->
-  <!--      <ejs-datepicker id='datepicker' placeholder='Select a date' #itemDate format='dd-MM-yyyy'></ejs-datepicker>-->
-
-  <!--      &lt;!&ndash;    <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle, itemAmount, itemDate)">&ndash;&gt;-->
-  <!--      &lt;!&ndash;      <i class="fa fa-plus-circle fa-2x"></i>&ndash;&gt;-->
-  <!--      &lt;!&ndash;    </div>&ndash;&gt;-->
-  <!--      <div class="input-group-addon hover-cursor">-->
-  <!--        <i class="fa fa-plus-circle fa-2x"></i>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </table>-->
+<!--      &lt;!&ndash;    <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle, itemAmount, itemDate)">&ndash;&gt;-->
+<!--      &lt;!&ndash;      <i class="fa fa-plus-circle fa-2x"></i>&ndash;&gt;-->
+<!--      &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--      <div class="input-group-addon hover-cursor">-->
+<!--        <i class="fa fa-plus-circle fa-2x"></i>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </table>-->
 
