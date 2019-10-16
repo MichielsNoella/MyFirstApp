@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
 import {Budget} from '../budget.model';
 
@@ -10,8 +10,7 @@ import {Budget} from '../budget.model';
 export class BudgetListComponent implements OnInit {
 
   @Input() budgets: Budget[];
-
-  // TODO create event remove
+  @Output() delete: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private service: StaticDataSource
@@ -22,6 +21,6 @@ export class BudgetListComponent implements OnInit {
   }
 
   onDelete(id: string) {
-    this.service.removeShopping(id);
+    this.delete.emit(id);
   }
 }

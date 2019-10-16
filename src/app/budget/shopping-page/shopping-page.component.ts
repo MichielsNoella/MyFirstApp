@@ -24,14 +24,13 @@ export class ShoppingPageComponent implements OnInit {
           this.shoppings.push(x);
         });
       });
-
   }
 
   addShopping($event: any) {
     this.service.addNewExpense($event);
   }
 
-  // erzerazerze($event: any) {
-  //
-  // }
+  deleteShopping($event: string) {
+    this.service.removeShopping($event);
+  }
 }

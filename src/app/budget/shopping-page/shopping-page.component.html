@@ -1,3 +1,4 @@
 <h3 class="bg-primary p-1 text-white text-center">Shopping</h3>
 <app-budget-add (add)="addShopping($event)"></app-budget-add>
-<app-budget-list [budgets]="shoppings"></app-budget-list>
+<app-budget-list [budgets]="shoppings" (delete)="deleteShopping($event)"></app-budget-list>
+

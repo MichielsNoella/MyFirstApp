@@ -12,9 +12,6 @@ export class BudgetAddComponent implements OnInit {
 
   @Output() add: EventEmitter<any> = new EventEmitter<any>();
 
-  direction = Genre;
-  selectedDirection: Genre;
-
   budgetForm = new FormGroup({
     description: new FormControl('', Validators.required),
     amount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
