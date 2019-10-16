@@ -22,12 +22,12 @@ export class StaticDataSource {
     this.shoppings$.push(value);
   }
 
-  formDate(date: Date) {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
-  }
+  // formDate(date: Date) {
+  //   const day = date.getDate();
+  //   const month = date.getMonth() + 1;
+  //   const year = date.getFullYear();
+  //   return `${day}-${month}-${year}`;
+  // }
 
   removeShopping(id: string) {
     this.shoppings$.remove(id);
