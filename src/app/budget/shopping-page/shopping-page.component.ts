@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
-import {Budget} from '../budget.model';
+import {Budget, Genre} from '../budget.model';
 
 @Component({
   selector: 'app-shopping-page',
@@ -15,6 +15,9 @@ export class ShoppingPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    // let id = this.route.snapshot.paramMap.get('id');
+    const genre: Genre = Genre.V;
+
     this.service.getShoppingList().snapshotChanges()
       .subscribe(item => {
         this.shoppings = [];
@@ -23,6 +26,7 @@ export class ShoppingPageComponent implements OnInit {
           x[`id`] = element.key;
           this.shoppings.push(x);
         });
+        this.shoppings.filter(i => i.genre === genre);
       });
   }
 
