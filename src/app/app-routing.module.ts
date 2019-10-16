@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {
     path: 'shopping',
-    loadChildren: './shopping/shopping.module#ShoppingModule'
+    loadChildren: './budget/shopping.module#ShoppingModule'
   },
   {path: '**', redirectTo: '/shopping/page'}
 
