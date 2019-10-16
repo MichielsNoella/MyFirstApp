@@ -1,19 +1,17 @@
-import {EnumValue} from '@angular/compiler-cli/src/ngtsc/metadata';
-
 export class Shopping {
   constructor(
     public purchaseDescription?: string,
     public purchaseAmount?: number,
     public purchaseDate?: string,
-    public id?: string
-  // public genre?: EnumValue
+    public id?: string,
+    public genre?: Genre
   ) {
   }
 }
 
-export enum Direction {
-  Up = 'UP',
-  Down = 'DOWN',
-  Left = 'LEFT',
-  Right = 'RIGHT',
+export enum Genre {
+  V = 'Various',
+  VD = 'Visa Danny',
+  VN = 'Visa Noella',
+  FC = 'Fixed charges',
 }

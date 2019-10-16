@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Genre} from '../shopping.model';
 
 @Component({
   selector: 'app-shopping-add',
@@ -8,11 +9,14 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./shopping-add.component.css']
 })
 export class ShoppingAddComponent implements OnInit {
+  direction = Genre;
+  selectedDirection: Genre;
 
   addNewExpenseForm = new FormGroup({
     purchaseDescription: new FormControl('', Validators.required),
-    purchaseAmount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/\d+(\.\d{1,2})?/)]),
-    purchaseDate: new FormControl('', Validators.required)
+    purchaseAmount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
+    purchaseDate: new FormControl('', Validators.required),
+    genre: new FormControl('')
   });
 
   // get purchaseDescription() {
@@ -42,4 +46,7 @@ export class ShoppingAddComponent implements OnInit {
     this.addNewExpenseForm.reset();
   }
 
+  getDirection() {
+    return Object.values(Genre);
+  }
 }
