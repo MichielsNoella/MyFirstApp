@@ -4,11 +4,11 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Genre} from '../shopping.model';
 
 @Component({
-  selector: 'app-shopping-add',
-  templateUrl: './shopping-add.component.html',
-  styleUrls: ['./shopping-add.component.css']
+  selector: 'app-budget-add',
+  templateUrl: './budget-add.component.html',
+  styleUrls: ['./budget-add.component.css']
 })
-export class ShoppingAddComponent implements OnInit {
+export class BudgetAddComponent implements OnInit {
 
   @Output() add: EventEmitter<any> = new EventEmitter<any>();
 

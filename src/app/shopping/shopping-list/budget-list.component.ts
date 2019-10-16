@@ -3,13 +3,13 @@ import {StaticDataSource} from '../static.datasource';
 import {Budget} from '../shopping.model';
 
 @Component({
-  selector: 'app-shopping-list',
-  templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.css']
+  selector: 'app-budget-list',
+  templateUrl: './budget-list.component.html',
+  styleUrls: ['./budget-list.component.css']
 })
-export class ShoppingListComponent implements OnInit {
+export class BudgetListComponent implements OnInit {
 
-  @Input() shoppings: Budget[];
+  @Input() budgets: Budget[];
 
   // TODO create event remove
 
