@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
 import {root} from 'rxjs/internal-compatibility';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import {Shopping} from './shopping.model';
+import {Budget} from './shopping.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StaticDataSource {
 
-  shoppings$: AngularFireList<Shopping>;
+  shoppings$: AngularFireList<Budget>;
+  salaire$: AngularFireList<Budget>;
 
   constructor(private firebasedb: AngularFireDatabase) {
     this.shoppings$ = this.firebasedb.list('shoppings');

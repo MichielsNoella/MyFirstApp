@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
-import {Shopping} from '../shopping.model';
+import {Budget} from '../shopping.model';
 
 @Component({
   selector: 'app-shopping-list',
@@ -9,7 +9,7 @@ import {Shopping} from '../shopping.model';
 })
 export class ShoppingListComponent implements OnInit {
 
-  @Input() shoppings: Shopping[];
+  @Input() shoppings: Budget[];
 
   // TODO create event remove
 

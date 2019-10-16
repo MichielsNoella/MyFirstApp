@@ -1,8 +1,8 @@
-export class Shopping {
+export class Budget {
   constructor(
-    public purchaseDescription?: string,
-    public purchaseAmount?: number,
-    public purchaseDate?: string,
+    public description?: string,
+    public amount?: number,
+    public budgetDate?: string,
     public id?: string,
     public genre?: Genre
   ) {

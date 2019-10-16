@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
-import {Shopping} from '../shopping.model';
+import {Budget} from '../shopping.model';
 
 @Component({
   selector: 'app-shopping-page',
@@ -9,7 +9,7 @@ import {Shopping} from '../shopping.model';
 })
 export class ShoppingPageComponent implements OnInit {
 
-  shoppings: Shopping[];
+  shoppings: Budget[];
 
   constructor(private service: StaticDataSource) {
   }

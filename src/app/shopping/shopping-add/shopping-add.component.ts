@@ -15,19 +15,19 @@ export class ShoppingAddComponent implements OnInit {
   direction = Genre;
   selectedDirection: Genre;
 
-  addNewExpenseForm = new FormGroup({
-    purchaseDescription: new FormControl('', Validators.required),
-    purchaseAmount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
-    purchaseDate: new FormControl('', Validators.required),
+  budgetForm = new FormGroup({
+    description: new FormControl('', Validators.required),
+    amount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
+    budgetDate: new FormControl('', Validators.required),
     genre: new FormControl('')
   });
 
-  // get purchaseDescription() {
-  //   return this.addNewExpenseForm.get('purchaseDescription');
+  // get description() {
+  //   return this.budgetForm.get('description');
   // }
 
   get f() {
-    return this.addNewExpenseForm.controls;
+    return this.budgetForm.controls;
   }
 
   constructor(
@@ -39,16 +39,15 @@ export class ShoppingAddComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.addNewExpenseForm.invalid) {
+    if (this.budgetForm.invalid) {
       return;
     }
 
-    const d = this.addNewExpenseForm.controls.purchaseDate.value;
-    this.addNewExpenseForm.controls.purchaseDate.setValue(d.year + '-' + d.month + '-' + d.day);
-    // this.service.addNewExpense(this.addNewExpenseForm.value);
-    this.add.emit(this.addNewExpenseForm.value);
+    const d = this.budgetForm.controls.budgetDate.value;
+    this.budgetForm.controls.budgetDate.setValue(d.year + '-' + d.month + '-' + d.day);
+    this.add.emit(this.budgetForm.value);
 
-    this.addNewExpenseForm.reset();
+    this.budgetForm.reset();
   }
 
   getDirection() {

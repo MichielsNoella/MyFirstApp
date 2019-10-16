@@ -1,4 +1,4 @@
-<form [formGroup]="addNewExpenseForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
   <table class="table table-striped table-bordered table-sm">
     <thead>
     <tr>
@@ -9,31 +9,31 @@
 
     <tr>
       <td>
-        <input id="purchaseDescription" class="form-control" type="text" formControlName="purchaseDescription" required
+        <input id="purchaseDescription" class="form-control" type="text" formControlName="description" required
                placeholder="Market">
-        <div *ngIf="f.purchaseDescription.invalid && (f.purchaseDescription.dirty || f.purchaseDescription.touched)"
+        <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)"
              class="alert alert-danger">
-          <div *ngIf="f.purchaseDescription.errors.required">
+          <div *ngIf="f.description.errors.required">
             Name is required.
           </div>
         </div>
       </td>
       <td>
-        <input id="purchaseAmount" class="form-control" type="text" formControlName="purchaseAmount" required
+        <input id="purchaseAmount" class="form-control" type="text" formControlName="amount" required
                placeholder="Amount">
-        <div *ngIf="f.purchaseAmount.invalid && (f.purchaseAmount.dirty || f.purchaseAmount.touched)"
+        <div *ngIf="f.amount.invalid && (f.amount.dirty || f.amount.touched)"
              class="alert alert-danger">
-          <div *ngIf="f.purchaseAmount.errors.pattern">
+          <div *ngIf="f.amount.errors.pattern">
             No characters allowed
           </div>
-          <div *ngIf="f.purchaseAmount.errors.required">
+          <div *ngIf="f.amount.errors.required">
             Amount is required.
           </div>
         </div>
       </td>
       <td>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" formControlName="purchaseDate" required
+          <input class="form-control" placeholder="yyyy-mm-dd" formControlName="budgetDate" required
                  placeholder="Date"
                  name="dp" ngbDatepicker #d="ngbDatepicker">
 
@@ -41,9 +41,9 @@
             <span class="input-group-text"  (click)="d.toggle()"><i class="fa fa-calendar"></i></span>
           </div>
         </div>
-        <div *ngIf="f.purchaseDate.invalid && (f.purchaseDate.dirty || f.purchaseDate.touched)"
+        <div *ngIf="f.budgetDate.invalid && (f.budgetDate.dirty || f.budgetDate.touched)"
              class="alert alert-danger">
-          <div *ngIf="f.purchaseDate.errors.required">
+          <div *ngIf="f.budgetDate.errors.required">
             Date is required.
           </div>
         </div>
@@ -58,7 +58,7 @@
         </select>
       </td>
       <td>
-        <button type="submit" [disabled]="!addNewExpenseForm.valid">Add</button>
+        <button type="submit" [disabled]="!budgetForm.valid">Add</button>
       </td>
     </tr>
     </tbody>
