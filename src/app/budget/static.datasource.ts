@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {root} from 'rxjs/internal-compatibility';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import {Budget} from './shopping.model';
+import {Budget} from './budget.model';
 
 @Injectable({
   providedIn: 'root'

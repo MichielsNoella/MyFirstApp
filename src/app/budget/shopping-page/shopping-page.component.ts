@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
-import {Budget} from '../shopping.model';
+import {Budget} from '../budget.model';
 
 @Component({
   selector: 'app-shopping-page',

@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BudgetListComponent} from './budget-list/budget-list.component';
 import {BudgetAddComponent} from './budget-add/budget-add.component';
-import {ShoppingRoutingModule} from './shopping-routing.module';
+import {BudgetRoutingModule} from './budget-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePickerModule} from '@syncfusion/ej2-angular-calendars';
 import {ShoppingPageComponent} from './shopping-page/shopping-page.component';
@@ -12,7 +12,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent],
   imports: [
     CommonModule,
-    ShoppingRoutingModule,
+    BudgetRoutingModule,
     FormsModule,
     DatePickerModule,
     ReactiveFormsModule, NgbModule
@@ -21,5 +21,5 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BudgetListComponent, BudgetAddComponent
   ]
 })
-export class ShoppingModule {
+export class BudgetModule {
 }

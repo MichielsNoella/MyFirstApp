@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Genre} from '../shopping.model';
+import {Genre} from '../budget.model';
 
 @Component({
   selector: 'app-budget-add',
@@ -19,7 +19,7 @@ export class BudgetAddComponent implements OnInit {
     description: new FormControl('', Validators.required),
     amount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
     budgetDate: new FormControl('', Validators.required),
-    genre: new FormControl('')
+    genre: new FormControl(Genre.V)
   });
 
   // get description() {

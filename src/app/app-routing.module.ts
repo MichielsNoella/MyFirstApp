@@ -3,10 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'shopping',
-    loadChildren: './budget/shopping.module#ShoppingModule'
+    path: 'budget',
+    loadChildren: './budget/budget.module#BudgetModule'
   },
-  {path: '**', redirectTo: '/shopping/page'}
+  {path: '**', redirectTo: '/budget/page'}
 
 ];
 
