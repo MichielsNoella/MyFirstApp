@@ -1,12 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
   {
     path: 'budget',
     loadChildren: './budget/budget.module#BudgetModule'
   },
-  {path: '**', redirectTo: '/budget/page'}
+  {path: 'home', component: HomeComponent},
+  {path: '**', redirectTo: '/home'}
 
 ];
 
