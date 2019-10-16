@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Genre} from '../shopping.model';
@@ -9,6 +9,9 @@ import {Genre} from '../shopping.model';
   styleUrls: ['./shopping-add.component.css']
 })
 export class ShoppingAddComponent implements OnInit {
+
+  @Output() add: EventEmitter<any> = new EventEmitter<any>();
+
   direction = Genre;
   selectedDirection: Genre;
 
@@ -42,7 +45,9 @@ export class ShoppingAddComponent implements OnInit {
 
     const d = this.addNewExpenseForm.controls.purchaseDate.value;
     this.addNewExpenseForm.controls.purchaseDate.setValue(d.year + '-' + d.month + '-' + d.day);
-    this.service.addNewExpense(this.addNewExpenseForm.value);
+    // this.service.addNewExpense(this.addNewExpenseForm.value);
+    this.add.emit(this.addNewExpenseForm.value);
+
     this.addNewExpenseForm.reset();
   }
 
