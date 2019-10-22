@@ -18,15 +18,6 @@ export class ShoppingPageComponent implements OnInit {
     this.service.getShoppingList().subscribe(budgets => {
       this.shoppings = budgets;
     });
-    // this.service.getShoppingList().snapshotChanges()
-    //   .subscribe(item => {
-    //     this.shoppings = [];
-    //     item.forEach(element => {
-    //       const x = element.payload.toJSON();
-    //       x[`id`] = element.key;
-    //       this.shoppings.push(x);
-    //     });
-    //   });
   }
 
   addShopping($event: any) {

@@ -15,10 +15,10 @@ export class StaticDataSource {
 
   constructor(private firebasedb: AngularFireDatabase) {
     this.shoppingsRef = this.firebasedb.list('budgets', ref => {
-      return ref.orderByChild('genre').equalTo(Genre.V);
+      return ref.orderByChild('genre').equalTo(Genre.VARIOUS);
     });
     this.visaRef = this.firebasedb.list('budgets', ref => {
-      return ref.orderByChild('genre').equalTo(Genre.VD);
+      return ref.orderByChild('genre').equalTo(Genre.VISA_D);
     });
   }
 

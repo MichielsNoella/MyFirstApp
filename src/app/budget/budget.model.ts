@@ -10,14 +10,8 @@ export class Budget {
 }
 
 export enum Genre {
-  V = 'V',
-  VD = 'VD',
-  VN = 'VN',
-  FC = 'FC',
+  VARIOUS = 'VARIOUS',
+  VISA_D = 'VISA_D',
+  VISA_N = 'VISA_N',
+  FIXED_CHARGES = 'FIXED_CHARGES',
 }
-// export enum Genre {
-//   V = 'Various',
-//   VD = 'Visa Danny',
-//   VN = 'Visa Noella',
-//   FC = 'Fixed charges',
-// }
