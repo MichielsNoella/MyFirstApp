@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
-import {Budget, Genre} from '../budget.model';
+import {Budget} from '../budget.model';
 
 @Component({
   selector: 'app-visa-page',
@@ -15,8 +15,6 @@ export class VisaPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    const genre: Genre = Genre.V;
-
     this.service.getVisaList().snapshotChanges()
       .subscribe(item => {
         this.visas = [];
@@ -25,15 +23,14 @@ export class VisaPageComponent implements OnInit {
           x[`id`] = element.key;
           this.visas.push(x);
         });
-        this.visas.filter(i => i.genre === genre);
       });
   }
 
   addVisa($event: any) {
-    this.service.addNewExpense($event);
+    this.service.addVisa($event);
   }
 
   deleteVisa($event: string) {
-    this.service.removeShopping($event);
+    this.service.removeVisa($event);
   }
 }

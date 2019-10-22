@@ -15,6 +15,6 @@ export class HomeComponent implements OnInit {
   }
 
   addShopping($event) {
-    this.service.addNewExpense($event);
+    this.service.addShopping($event);
   }
 }
