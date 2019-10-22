@@ -15,15 +15,9 @@ export class VisaPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getVisaList().snapshotChanges()
-      .subscribe(item => {
-        this.visas = [];
-        item.forEach(element => {
-          const x = element.payload.toJSON();
-          x[`id`] = element.key;
-          this.visas.push(x);
-        });
-      });
+    this.service.getVisaList().subscribe(budgets => {
+      this.visas = budgets;
+    });
   }
 
   addVisa($event: any) {

@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {root} from 'rxjs/internal-compatibility';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {Budget, Genre} from './budget.model';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,12 +22,24 @@ export class StaticDataSource {
     });
   }
 
-  getShoppingList() {
-    return this.shoppingsRef;
+  getShoppingList(): Observable<Budget[]> {
+    return this.shoppingsRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
   }
 
   getVisaList() {
-    return this.visaRef;
+    return this.visaRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
   }
 
   addShopping(value: any) {
@@ -36,13 +50,6 @@ export class StaticDataSource {
     this.visaRef.push(value);
   }
 
-  // formDate(date: Date) {
-  //   const day = date.getDate();
-  //   const month = date.getMonth() + 1;
-  //   const year = date.getFullYear();
-  //   return `${day}-${month}-${year}`;
-  // }
-
   removeShopping(id: string) {
     this.shoppingsRef.remove(id);
   }
@@ -50,6 +57,5 @@ export class StaticDataSource {
   removeVisa(id: string) {
     this.visaRef.remove(id);
   }
-
 
 }
