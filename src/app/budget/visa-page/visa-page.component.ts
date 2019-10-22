@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StaticDataSource} from '../static.datasource';
+import {Budget, Genre} from '../budget.model';
 
 @Component({
   selector: 'app-visa-page',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisaPageComponent implements OnInit {
 
-  constructor() { }
+  visas: Budget[];
 
-  ngOnInit() {
+  constructor(private service: StaticDataSource) {
   }
 
+  ngOnInit() {
+    const genre: Genre = Genre.V;
+
+    this.service.getVisaList().snapshotChanges()
+      .subscribe(item => {
+        this.visas = [];
+        item.forEach(element => {
+          const x = element.payload.toJSON();
+          x[`id`] = element.key;
+          this.visas.push(x);
+        });
+        this.visas.filter(i => i.genre === genre);
+      });
+  }
+
+  addVisa($event: any) {
+    this.service.addNewExpense($event);
+  }
+
+  deleteVisa($event: string) {
+    this.service.removeShopping($event);
+  }
 }

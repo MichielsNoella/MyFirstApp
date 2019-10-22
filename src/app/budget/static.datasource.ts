@@ -19,6 +19,10 @@ export class StaticDataSource {
     return this.shoppings$;
   }
 
+  getVisaList() {
+    return this.shoppings$;
+  }
+
   addNewExpense(value: any) {
     this.shoppings$.push(value);
   }
@@ -33,5 +37,6 @@ export class StaticDataSource {
   removeShopping(id: string) {
     this.shoppings$.remove(id);
   }
+
 
 }
