@@ -3,23 +3,37 @@ import {root} from 'rxjs/internal-compatibility';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {Budget, Genre} from './budget.model';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, reduce} from 'rxjs/operators';
+import * as firebase from 'firebase';
+import DataSnapshot = firebase.database.DataSnapshot;
 
 @Injectable({
   providedIn: 'root'
 })
 export class StaticDataSource {
 
+  budgetRef: AngularFireList<Budget>;
   shoppingsRef: AngularFireList<Budget>;
   visaRef: AngularFireList<Budget>;
 
   constructor(private firebasedb: AngularFireDatabase) {
+    this.budgetRef = this.firebasedb.list('budgets');
     this.shoppingsRef = this.firebasedb.list('budgets', ref => {
       return ref.orderByChild('genre').equalTo(Genre.VARIOUS);
     });
     this.visaRef = this.firebasedb.list('budgets', ref => {
       return ref.orderByChild('genre').equalTo(Genre.VISA_D);
     });
+  }
+
+  getTotalList(): Observable<Budget[]> {
+    return this.budgetRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
   }
 
   getShoppingList(): Observable<Budget[]> {

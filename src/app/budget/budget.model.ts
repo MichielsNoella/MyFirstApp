@@ -9,6 +9,12 @@ export class Budget {
   }
 }
 
+export class Sum {
+  shopping: number = 0;
+  visa: number = 0;
+  total: number = 0;
+}
+
 export enum Genre {
   VARIOUS = 'VARIOUS',
   VISA_D = 'VISA_D',
