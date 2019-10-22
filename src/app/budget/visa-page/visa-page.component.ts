@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
-import {Budget} from '../budget.model';
+import {Budget, Genre} from '../budget.model';
 
 @Component({
   selector: 'app-visa-page',
@@ -20,7 +20,8 @@ export class VisaPageComponent implements OnInit {
     });
   }
 
-  addVisa($event: any) {
+  addVisa($event: Budget) {
+    $event.genre = Genre.VISA_D;
     this.service.addVisa($event);
   }
 

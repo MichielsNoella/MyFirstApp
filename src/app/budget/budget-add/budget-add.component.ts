@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Genre} from '../budget.model';
+import {Budget, Genre} from '../budget.model';
 
 @Component({
   selector: 'app-budget-add',
@@ -10,13 +10,12 @@ import {Genre} from '../budget.model';
 })
 export class BudgetAddComponent implements OnInit {
 
-  @Output() add: EventEmitter<any> = new EventEmitter<any>();
+  @Output() add: EventEmitter<Budget> = new EventEmitter<Budget>();
 
   budgetForm = new FormGroup({
     description: new FormControl('', Validators.required),
     amount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
-    budgetDate: new FormControl('', Validators.required),
-    genre: new FormControl(Genre.VISA_D)
+    budgetDate: new FormControl('', Validators.required)
   });
 
   // get description() {

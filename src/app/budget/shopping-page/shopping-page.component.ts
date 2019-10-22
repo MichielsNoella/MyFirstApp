@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
-import {Budget} from '../budget.model';
+import {Budget, Genre} from '../budget.model';
 
 @Component({
   selector: 'app-shopping-page',
@@ -20,7 +20,8 @@ export class ShoppingPageComponent implements OnInit {
     });
   }
 
-  addShopping($event: any) {
+  addShopping($event: Budget) {
+    $event.genre = Genre.VARIOUS;
     this.service.addShopping($event);
   }
 
