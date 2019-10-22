@@ -1,12 +1,9 @@
 export class Budget {
-  constructor(
-    public description?: string,
-    public amount?: number,
-    public budgetDate?: string,
-    public id?: string,
-    public genre?: Genre
-  ) {
-  }
+    id: string;
+    description: string;
+    amount: number;
+    budgetDate: string;
+    genre: Genre;
 }
 
 export class Sum {
@@ -15,6 +12,9 @@ export class Sum {
   total: number = 0;
 }
 
+export class StartAmount {
+  startAmount: number = 0;
+}
 export enum Genre {
   VARIOUS = 'VARIOUS',
   VISA_D = 'VISA_D',
