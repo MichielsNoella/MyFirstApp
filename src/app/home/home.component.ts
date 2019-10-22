@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../budget/static.datasource';
-import {Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Genre, Sum} from '../budget/budget.model';
 
@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
 
   sum$: Observable<Sum>; // {shopping: 0, visa: 0, total: 0}
   startAmount$: Observable<string>;
+
+  result$: Observable<number>;
 
   constructor(private service: StaticDataSource) {
   }
@@ -32,6 +34,15 @@ export class HomeComponent implements OnInit {
         return total;
       }, new Sum()))
     );
+
+    this.result$ = combineLatest(this.startAmount$, this.sum$).pipe(
+      map(([startAmount, sum]) => {
+        return +startAmount - sum.total;
+      })
+    );
   }
 
+  test() {
+    this.service.updpateStartAmount();
+  }
 }

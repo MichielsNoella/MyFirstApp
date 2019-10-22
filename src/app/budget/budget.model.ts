@@ -15,6 +15,7 @@ export class Sum {
 export class StartAmount {
   startAmount: number = 0;
 }
+
 export enum Genre {
   VARIOUS = 'VARIOUS',
   VISA_D = 'VISA_D',

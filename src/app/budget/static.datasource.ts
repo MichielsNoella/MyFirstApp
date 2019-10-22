@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {root} from 'rxjs/internal-compatibility';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import {Budget, Genre} from './budget.model';
+import {Budget, Genre, StartAmount} from './budget.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -10,13 +10,11 @@ import {map} from 'rxjs/operators';
 })
 export class StaticDataSource {
 
-  startAmount$: Observable<string>;
   budgetRef: AngularFireList<Budget>;
   shoppingsRef: AngularFireList<Budget>;
   visaRef: AngularFireList<Budget>;
 
   constructor(private firebasedb: AngularFireDatabase) {
-    this.startAmount$ = this.firebasedb.object('startAmount').valueChanges();
     this.budgetRef = this.firebasedb.list('budgets');
     this.shoppingsRef = this.firebasedb.list('budgets', ref => {
       return ref.orderByChild('genre').equalTo(Genre.VARIOUS);
@@ -26,8 +24,12 @@ export class StaticDataSource {
     });
   }
 
+  updpateStartAmount() {
+    this.firebasedb.object('configApp').update({startAmount: '100.25'});
+  }
+
   getStartAmount(): Observable<string> {
-    return this.startAmount$;
+    return this.firebasedb.object('configApp/startAmount').valueChanges();
   }
 
   getTotalList(): Observable<Budget[]> {

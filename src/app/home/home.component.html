@@ -1,6 +1,7 @@
 <div class="col-3 p-2">
   <div>
-    {{startAmount$ | async}}
+    <input id="startAmount" class="form-control" type="text" required  placeholder="StartAmount" value="{{startAmount$ | async}}">
+    <button class="btn btn-secondary m-1" (click)="test()">Modify</button>
   </div>
   <div>
     <button class="btn btn-secondary m-1" routerLink="/budget/shopping">Shopping {{ (sum$ | async)?.shopping }}</button>
@@ -10,5 +11,8 @@
   </div>
   <div>
     total : {{ (sum$ | async)?.total }}
+  </div>
+  <div>
+    result : {{ result$ | async }}
   </div>
 </div>
