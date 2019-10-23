@@ -18,10 +18,6 @@ export class BudgetAddComponent implements OnInit {
     budgetDate: new FormControl('', Validators.required)
   });
 
-  // get description() {
-  //   return this.budgetForm.get('description');
-  // }
-
   get f() {
     return this.budgetForm.controls;
   }

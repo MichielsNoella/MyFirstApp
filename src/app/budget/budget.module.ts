@@ -8,9 +8,10 @@ import {DatePickerModule} from '@syncfusion/ej2-angular-calendars';
 import {ShoppingPageComponent} from './shopping-page/shopping-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {VisaDannyPageComponent} from './visa-danny-page/visa-danny-page.component';
+import {VisaNoellaPageComponent} from './visa-noella-page/visa-noella-page.component';
 
 @NgModule({
-  declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaDannyPageComponent],
+  declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaDannyPageComponent, VisaNoellaPageComponent],
   imports: [
     CommonModule,
     BudgetRoutingModule,

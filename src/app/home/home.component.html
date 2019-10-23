@@ -31,6 +31,13 @@
     </div>
     <br>
     <div class="row">
+      <div class="col-sm">
+        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/visaNoella">Visa Noella</button>
+      </div>
+      <div class="col-sm-8"> {{ (sum$ | async)?.visaNoella | currency:"EUR":"symbol":"2.2-2" }}</div>
+    </div>
+    <br>
+    <div class="row">
       <div class="col-sm"><label class="btn btn-outline-primary btn-block font-weight-bold">Totale kosten</label></div>
       <div class="col-sm-8"> {{ (sum$ | async)?.total | currency:"EUR":"symbol":"2.2-2" }}</div>
     </div>
