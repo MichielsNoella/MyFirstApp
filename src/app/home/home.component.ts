@@ -3,6 +3,10 @@ import {StaticDataSource} from '../budget/static.datasource';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Genre, Sum} from '../budget/budget.model';
+// TODO inlogscherm
+// TODO vaste kosten
+// TODO tabel met vaste kosten om op het einde van de maand toe te voegen
+// TODO overzicht van alle rekeningen (spaarboek, start2save enz)
 
 @Component({
   selector: 'app-home',
