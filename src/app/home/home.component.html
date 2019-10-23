@@ -1,7 +1,8 @@
 <div class="col-3 p-2">
   <div>
-    <input id="startAmount" class="form-control" type="text" required  placeholder="StartAmount" value="{{startAmount$ | async}}">
-    <button class="btn btn-secondary m-1" (click)="updateStartAmount()">Modify</button>
+    <input id="startAmount" class="form-control" type="text" required placeholder="StartAmount"
+           value="{{startAmount$ | async}}" #inputStartAmount>
+    <button class="btn btn-secondary m-1" (click)="updateStartAmount(inputStartAmount.value)">Modify</button>
   </div>
   <div>
     <button class="btn btn-secondary m-1" routerLink="/budget/shopping">Shopping {{ (sum$ | async)?.shopping }}</button>

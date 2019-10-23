@@ -1,9 +1,9 @@
 export class Budget {
-    id: string;
-    description: string;
-    amount: number;
-    budgetDate: string;
-    genre: Genre;
+  id: string;
+  description: string;
+  amount: number;
+  budgetDate: string;
+  genre: Genre;
 }
 
 export class Sum {

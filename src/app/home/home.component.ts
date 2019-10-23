@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  updateStartAmount() {
-    this.service.updpateStartAmount();
+  updateStartAmount(inputStartAmount: string) {
+    this.service.updpateStartAmount(inputStartAmount);
   }
 }

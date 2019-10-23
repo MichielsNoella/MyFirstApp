@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {root} from 'rxjs/internal-compatibility';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import {Budget, Genre, StartAmount} from './budget.model';
+import {Budget, Genre} from './budget.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -24,8 +24,8 @@ export class StaticDataSource {
     });
   }
 
-  updpateStartAmount() {
-    this.firebasedb.object('configApp').update({startAmount: '100.25'});
+  updpateStartAmount(inputStartAmount: string) {
+    this.firebasedb.object('configApp').update({startAmount: inputStartAmount});
   }
 
   getStartAmount(): Observable<string> {
