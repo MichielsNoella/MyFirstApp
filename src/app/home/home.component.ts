@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
         if (budget.genre === Genre.VARIOUS) {
           total.shopping = +total.shopping + +budget.amount;
         } else if (budget.genre === Genre.VISA_D) {
-          total.visa = +total.visa + +budget.amount;
+          total.visaDanny = +total.visaDanny + +budget.amount;
         }
         total.total = +total.total + +budget.amount;
         return total;

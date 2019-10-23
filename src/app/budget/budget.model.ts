@@ -8,7 +8,7 @@ export class Budget {
 
 export class Sum {
   shopping: number = 0;
-  visa: number = 0;
+  visaDanny: number = 0;
   total: number = 0;
 }
 

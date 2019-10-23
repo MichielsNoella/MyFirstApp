@@ -8,35 +8,35 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm"><label class="btn btn-outline-primary btn-block">StartAmount : </label></div>
+      <div class="col-sm-4"><label class="btn btn-outline-primary btn-block font-weight-bold">Start bedrag : </label></div>
       <div class="col-sm"><input id="startAmount" class="form-control" type="text" required
                                  value="{{startAmount$ | async }}" #inputStartAmount></div>
-      <div class="col-sm">
-        <button class="btn btn-secondary m-1" (click)="updateStartAmount(inputStartAmount.value)">Modify</button>
+      <div class="col-sm-7 font-weight-bold">
+        <button class="btn btn-secondary m-1 "data-toggle="tooltip" data-placement="right" title="Wijzigen" (click)="updateStartAmount(inputStartAmount.value)"><i class="fa fa-edit fa-lg" ></i></button>
       </div>
     </div>
     <br>
     <div class="row">
       <div class="col-sm">
-        <button class="btn btn-outline-primary btn-block" routerLink="/budget/shopping">Shopping</button>
+        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/shopping">Allerlei</button>
       </div>
       <div class="col-sm-8"> {{ (sum$ | async)?.shopping | currency:"EUR":"symbol":"2.2-2" }}</div>
     </div>
     <br>
     <div class="row">
       <div class="col-sm">
-        <button class="btn btn-outline-primary btn-block" routerLink="/budget/visaDanny">Visa Danny</button>
+        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/visaDanny">Visa Danny</button>
       </div>
-      <div class="col-sm-8"> {{ (sum$ | async)?.visa | currency:"EUR":"symbol":"2.2-2" }}</div>
+      <div class="col-sm-8"> {{ (sum$ | async)?.visaDanny | currency:"EUR":"symbol":"2.2-2" }}</div>
     </div>
     <br>
     <div class="row">
-      <div class="col-sm"><label class="btn btn-outline-primary btn-block">Totale kosten</label></div>
+      <div class="col-sm"><label class="btn btn-outline-primary btn-block font-weight-bold">Totale kosten</label></div>
       <div class="col-sm-8"> {{ (sum$ | async)?.total | currency:"EUR":"symbol":"2.2-2" }}</div>
     </div>
     <br>
     <div class="row">
-      <div class="col-sm"><label class="btn btn-outline-primary btn-block">Saldo</label></div>
+      <div class="col-sm"><label class="btn btn-outline-primary btn-block font-weight-bold" [class.text-danger]="(result$ | async) < 0" [class.text-success]="(result$ | async) >= 0">Saldo</label></div>
       <div class="col-sm-8" [class.text-danger]="(result$ | async) < 0"> {{ result$ | async | currency:"EUR":"symbol":"2.2-2" }}</div>
 
     </div>

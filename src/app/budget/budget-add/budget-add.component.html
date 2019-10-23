@@ -2,7 +2,7 @@
   <table class="table table-striped table-bordered table-sm">
     <thead>
     <tr>
-      <th colspan="4">NEW</th>
+      <th colspan="5">NEW</th>
     </tr>
     </thead>
     <tbody>
@@ -38,7 +38,7 @@
                  name="dp" ngbDatepicker #d="ngbDatepicker">
 
           <div class="input-group-append">
-            <span class="input-group-text"  (click)="d.toggle()"><i class="fa fa-calendar"></i></span>
+            <span class="input-group-text"  (click)="d.toggle()"><i class="fa fa-calendar fa-lg"></i></span>
           </div>
         </div>
         <div *ngIf="f.budgetDate.invalid && (f.budgetDate.dirty || f.budgetDate.touched)"
@@ -49,7 +49,10 @@
         </div>
       </td>
       <td>
-        <button type="submit" [disabled]="!budgetForm.valid">Add</button>
+        <button type="submit" data-toggle="tooltip" data-placement="right" title="Voeg toe" [disabled]="!budgetForm.valid"><i class="fa fa-plus fa-2x"></i></button>
+      </td>
+      <td>
+        <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Home"routerLink="/home/home" ><i class="fa fa-home fa-lg"></i></button>
       </td>
     </tr>
     </tbody>
