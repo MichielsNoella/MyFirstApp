@@ -5,11 +5,10 @@
   </tr>
 
   <div class="row">
-    <div class="col-3">Description</div>
-    <div class="col-2">Amount</div>
-    <div class="col-2">Date</div>
-    <div class="col-2">Genre</div>
-    <div class="col-2" align="right">Delete</div>
+    <div class="col-3">Omschrijving</div>
+    <div class="col-2">Bedrag</div>
+    <div class="col-2">Datum</div>
+    <div class="col-2" align="right">Verwijder</div>
   </div>
   </thead>
 
@@ -23,9 +22,6 @@
       </div>
       <div class="col-2">
         {{item.budgetDate}}
-      </div>
-      <div class="col-2">
-        {{item.genre}}
       </div>
       <div class="col-2">
         <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.id)">
