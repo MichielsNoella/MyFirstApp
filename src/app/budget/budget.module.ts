@@ -7,10 +7,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePickerModule} from '@syncfusion/ej2-angular-calendars';
 import {ShoppingPageComponent} from './shopping-page/shopping-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {VisaPageComponent} from './visa-page/visa-page.component';
+import {VisaDannyPageComponent} from './visa-danny-page/visa-danny-page.component';
 
 @NgModule({
-  declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaPageComponent],
+  declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaDannyPageComponent],
   imports: [
     CommonModule,
     BudgetRoutingModule,

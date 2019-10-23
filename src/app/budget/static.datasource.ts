@@ -12,14 +12,14 @@ export class StaticDataSource {
 
   budgetRef: AngularFireList<Budget>;
   shoppingsRef: AngularFireList<Budget>;
-  visaRef: AngularFireList<Budget>;
+  visaDannyRef: AngularFireList<Budget>;
 
   constructor(private firebasedb: AngularFireDatabase) {
     this.budgetRef = this.firebasedb.list('budgets');
     this.shoppingsRef = this.firebasedb.list('budgets', ref => {
       return ref.orderByChild('genre').equalTo(Genre.VARIOUS);
     });
-    this.visaRef = this.firebasedb.list('budgets', ref => {
+    this.visaDannyRef = this.firebasedb.list('budgets', ref => {
       return ref.orderByChild('genre').equalTo(Genre.VISA_D);
     });
   }
@@ -52,8 +52,8 @@ export class StaticDataSource {
     );
   }
 
-  getVisaList() {
-    return this.visaRef.snapshotChanges().pipe(
+  getVisaDannyList() {
+    return this.visaDannyRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({id: c.payload.key, ...c.payload.val()})
@@ -66,16 +66,16 @@ export class StaticDataSource {
     this.shoppingsRef.push(value);
   }
 
-  addVisa(value: any) {
-    this.visaRef.push(value);
+  addVisaDanny(value: any) {
+    this.visaDannyRef.push(value);
   }
 
   removeShopping(id: string) {
     this.shoppingsRef.remove(id);
   }
 
-  removeVisa(id: string) {
-    this.visaRef.remove(id);
+  removeVisaDanny(id: string) {
+    this.visaDannyRef.remove(id);
   }
 
 }
