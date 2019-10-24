@@ -19,13 +19,12 @@ export class LoginComponent implements OnInit {
   signIn(email: string, password: string) {
     this.authService.signIn(email, password)
       .then(res => {
-        console.log('Successfully signed in!');
         this.router.navigate(['home/home']);
       })
       .catch(err => {
         console.log('Something is wrong:', 'Verkeerd paswoord en/of email : toegang geweigerd');
         console.log(err);
-        this.errorMessage = 'Something is wrong: Verkeerd paswoord en/of email : toegang geweigerd';
+        this.errorMessage = 'Verkeerd paswoord en/of email : toegang geweigerd';
       });
   }
 

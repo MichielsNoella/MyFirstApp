@@ -12,8 +12,8 @@
                 <input type="text" class="form-control mb-2" placeholder="Email" required autofocus #email>
                 <input type="password" class="form-control mb-2" placeholder="Password" #password required>
                 <button class="btn btn-lg btn-primary btn-block mb-1" (click)="signIn(email.value, password.value)">Login</button>
+                <div class="badge-danger" *ngIf="errorMessage">{{errorMessage}}</div>
             </div>
-            <div *ngIf="errorMessage">{{errorMessage}}</div>
           </div>
         </div>
       </div>
