@@ -10,9 +10,14 @@ const routes: Routes = [
     path: 'home',
     loadChildren: './home/home.module#HomeModule'
   },
-  {path: '**', redirectTo: '/home/home'}
-
+  {
+    path: 'admin',
+    loadChildren: './admin/admin.module#AdminModule'
+  },
+  // {path: '**', redirectTo: '/home/home'}
+  {path: '**', redirectTo: '/admin/login'}
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

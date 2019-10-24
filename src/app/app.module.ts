@@ -8,6 +8,7 @@ import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {environment} from '../environments/environment';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AngularFireAuth} from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     // HomeModule
   ],
 
-  providers: [],
+  providers: [AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule {
