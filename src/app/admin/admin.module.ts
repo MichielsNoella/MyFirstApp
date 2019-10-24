@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {LoginComponent} from './login/login.component';
 import {AdminRoutingModule} from './admin-routing.module';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, VerifyEmailComponent],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     AdminRoutingModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}

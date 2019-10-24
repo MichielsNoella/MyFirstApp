@@ -11,8 +11,11 @@
       <div class="col-sm-4"><label class="btn btn-outline-primary btn-block font-weight-bold">Start bedrag : </label></div>
       <div class="col-sm"><input id="startAmount" class="form-control" type="text" required
                                  value="{{startAmount$ | async }}" #inputStartAmount></div>
-      <div class="col-sm-7 font-weight-bold">
-        <button class="btn btn-secondary m-1 "data-toggle="tooltip" data-placement="right" title="Wijzigen" (click)="updateStartAmount(inputStartAmount.value)"><i class="fa fa-edit fa-lg" ></i></button>
+      <div class="col-sm font-weight-bold">
+        <button class="btn btn-secondary m-1 "data-toggle="tooltip" data-placement="right" title="Wijzigen" (click)="updateStartAmount(inputStartAmount.value)"><i class="fa fa-edit" ></i></button>
+      </div>
+      <div class="col-sm-6 font-weight-bold">
+        <button class="btn btn-secondary m-1 "data-toggle="tooltip" data-placement="right" title="Uitloggen" (click)="signOut()"><i class="fa fa-stop-circle" ></i></button>
       </div>
     </div>
     <br>

@@ -3,6 +3,9 @@ import {StaticDataSource} from '../budget/static.datasource';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Genre, Sum} from '../budget/budget.model';
+import {AngularFireAuth} from 'angularfire2/auth';
+import {AuthService} from '../auth/auth.service';
+import {Router} from '@angular/router';
 // TODO inlogscherm + logout
 // TODO controle input startBedrag
 // TODO vaste kosten
@@ -23,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   result$: Observable<number>;
 
-  constructor(private service: StaticDataSource) {
+  constructor(private service: StaticDataSource, private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -51,5 +54,11 @@ export class HomeComponent implements OnInit {
 
   updateStartAmount(inputStartAmount: string) {
     this.service.updpateStartAmount(inputStartAmount);
+  }
+
+  /* Sign out */
+  signOut() {
+    this.authService.signOut();
+    this.router.navigate(['admin/login']);
   }
 }

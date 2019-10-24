@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,22 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private  authService: AuthService) {
+  errorMessage: string;
+
+  constructor(private  authService: AuthService, private router: Router) {
   }
 
   signIn(email: string, password: string) {
-    console.log('.......................');
-    console.log(email);
-    console.log(password);
-    this.authService.signIn(email, password);
+    this.authService.signIn(email, password)
+      .then(res => {
+        console.log('Successfully signed in!');
+        this.router.navigate(['home/home']);
+      })
+      .catch(err => {
+        console.log('Something is wrong:', 'Verkeerd paswoord en/of email : toegang geweigerd');
+        console.log(err);
+        this.errorMessage = 'Something is wrong: Verkeerd paswoord en/of email : toegang geweigerd';
+      });
   }
 
   signOut() {
