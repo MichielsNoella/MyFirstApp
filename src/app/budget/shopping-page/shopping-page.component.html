@@ -1,6 +1,7 @@
 <div class="container">
-  <h4 class="bg-primary p-1 text-white text-center">Shopping</h4>
+  <h4 class="bg-primary p-1 text-white text-center">Aankopen</h4>
 </div>
 <app-budget-add (add)="addShopping($event)"></app-budget-add>
+<br>
 <app-budget-list [budgets]="shoppings" (delete)="deleteShopping($event)"></app-budget-list>
 

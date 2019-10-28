@@ -1,3 +1,4 @@
-<h3 class="bg-primary p-1 text-white text-center">Vaste lasten</h3>
+<h3 class="bg-primary p-1 text-white text-center">Vaste kosten</h3>
 <app-budget-add (add)="addFixedCharges($event)"></app-budget-add>
+<br>
 <app-budget-list [budgets]="fixedCharges" (delete)="deleteFixedCharges($event)"></app-budget-list>

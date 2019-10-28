@@ -95,7 +95,7 @@
                                    [class.text-danger]="(result$ | async) < 0"
                                    [class.text-success]="(result$ | async) >= 0">Saldo</label></div>
         <div class="col-sm-8"
-             [class.text-danger]="(result$ | async) < 0"> {{ result$ | async | currency:"EUR":"symbol":"2.2-2" }}</div>
+             [class.text-danger]="(result$ | async) < 0" [class.text-success]="(result$ | async) >= 0"> {{ result$ | async | currency:"EUR":"symbol":"2.2-2" }}</div>
       </div>
     </div>
   </div>
