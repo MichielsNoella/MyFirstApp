@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm">
           <input id="startAmount" class="form-control" type="text" formControlName="amount" required
-            placeholder="start bedrag" value="{{startAmount$ | async }}" #inputStartAmount>
+                 placeholder="start bedrag" value="{{startAmount$ | async }}" #inputStartAmount>
           <div *ngIf="f.amount.invalid && (f.amount.dirty || f.amount.touched)"
                class="alert alert-danger">
             <div *ngIf="f.amount.errors.pattern">
@@ -25,11 +25,14 @@
             </div>
           </div>
         </div>
+
         <div class="col-sm font-weight-bold">
-          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold " data-toggle="tooltip"
-                  data-placement="right" title="Wijzigen" (click)="updateStartAmount(inputStartAmount.value)"><i
-            class="fa fa-edit fa-lg"></i></button>
+          <button type="submit" class="btn btn-outline-primary btn-block bg-light font-weight-bold " data-toggle="tooltip"
+                  data-placement="right" title="Wijzigen"
+                  [disabled]="!homeForm.valid"> <i class="fa fa-edit fa-lg"></i>
+          </button>
         </div>
+
         <div class="col-sm font-weight-bold">
           <button class="btn btn-outline-primary btn-block bg-light font-weight-bold " data-toggle="tooltip"
                   data-placement="right" title="Uitloggen" (click)="signOut()"><i class="fa fa-sign-out fa-lg"></i>
@@ -94,4 +97,5 @@
       </div>
     </div>
   </div>
+
 </form>

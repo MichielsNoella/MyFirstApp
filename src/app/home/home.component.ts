@@ -36,6 +36,14 @@ export class HomeComponent implements OnInit {
     return this.homeForm.controls;
   }
 
+  onSubmit() {
+    if (this.homeForm.invalid) {
+      return;
+    }
+
+    this.service.updpateStartAmount(this.homeForm.controls.amount.value);
+  }
+
   ngOnInit() {
     this.startAmount$ = this.service.getStartAmount();
     this.sum$ = this.service.getTotalList().pipe(
@@ -59,10 +67,6 @@ export class HomeComponent implements OnInit {
         return +startAmount - sum.total;
       })
     );
-  }
-
-  updateStartAmount(inputStartAmount: string) {
-    this.service.updpateStartAmount(inputStartAmount);
   }
 
   /* Sign out */
