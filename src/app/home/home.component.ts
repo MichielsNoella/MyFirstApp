@@ -6,7 +6,6 @@ import {Genre, Sum} from '../budget/budget.model';
 import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-// TODO controle input startBedrag
 // TODO tabel met vaste kosten om op het einde van de maand toe te voegen
 // TODO overzicht van alle rekeningen (spaarboek, start2save enz)
 // TODO inkomen

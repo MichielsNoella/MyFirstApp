@@ -8,9 +8,9 @@
     </div>
     <br>
 
-    <div class="container ">
+    <div class="container">
       <div class="row justify-content-sm-center">
-        <div class="col-sm-4"><label class="btn btn-outline-primary btn-block font-weight-bold">Start bedrag : </label>
+        <div class="col-sm-4"><label class="btn btn-outline-primary btn-block disabled font-weight-bold">Start bedrag : </label>
         </div>
         <div class="col-sm">
           <input id="startAmount" class="form-control" type="text" formControlName="amount" required
@@ -74,7 +74,8 @@
       <div class="row justify-content-sm-center">
         <div class="col-sm">
           <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold"
-                  routerLink="/budget/fixedCharges">Vaste kosten
+                  routerLink="/budget/fixedCharges">
+            Vaste kosten
           </button>
         </div>
         <div class="col-sm-8"> {{ (sum$ | async)?.fixedCharges | currency:"EUR":"symbol":"2.2-2" }}</div>
@@ -82,14 +83,15 @@
       <br>
 
       <div class="row justify-content-sm-center">
-        <div class="col-sm"><label class="btn btn-outline-primary btn-block font-weight-bold">Totale kosten</label>
+        <div class="col-sm"><label class="btn btn-outline-primary btn-block disabled font-weight-bold">
+          Totale kosten</label>
         </div>
         <div class="col-sm-8"> {{ (sum$ | async)?.total | currency:"EUR":"symbol":"2.2-2" }}</div>
       </div>
       <br>
 
       <div class="row justify-content-sm-center">
-        <div class="col-sm"><label class="btn btn-outline-primary btn-block font-weight-bold"
+        <div class="col-sm"><label class="btn btn-outline-primary btn-block disabled font-weight-bold"
                                    [class.text-danger]="(result$ | async) < 0"
                                    [class.text-success]="(result$ | async) >= 0">Saldo</label></div>
         <div class="col-sm-8"
