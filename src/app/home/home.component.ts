@@ -6,9 +6,7 @@ import {Genre, Sum} from '../budget/budget.model';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
-// TODO inlogscherm + logout
 // TODO controle input startBedrag
-// TODO vaste kosten
 // TODO tabel met vaste kosten om op het einde van de maand toe te voegen
 // TODO overzicht van alle rekeningen (spaarboek, start2save enz)
 
@@ -39,6 +37,8 @@ export class HomeComponent implements OnInit {
           total.visaDanny = +total.visaDanny + +budget.amount;
         } else if (budget.genre === Genre.VISA_N) {
             total.visaNoella = +total.visaNoella + +budget.amount;
+        } else if (budget.genre === Genre.FIXED_CHARGES) {
+          total.fixedCharges = +total.fixedCharges + +budget.amount;
         }
         total.total = +total.total + +budget.amount;
         return total;

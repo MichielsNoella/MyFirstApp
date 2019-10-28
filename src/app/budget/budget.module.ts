@@ -9,9 +9,10 @@ import {ShoppingPageComponent} from './shopping-page/shopping-page.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {VisaDannyPageComponent} from './visa-danny-page/visa-danny-page.component';
 import {VisaNoellaPageComponent} from './visa-noella-page/visa-noella-page.component';
+import { FixedChargesComponent } from './fixed-charges/fixed-charges.component';
 
 @NgModule({
-  declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaDannyPageComponent, VisaNoellaPageComponent],
+  declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaDannyPageComponent, VisaNoellaPageComponent, FixedChargesComponent],
   imports: [
     CommonModule,
     BudgetRoutingModule,
