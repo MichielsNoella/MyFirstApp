@@ -4,6 +4,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BudgetModule} from '../budget/budget.module';
 import {HomeComponent} from './home.component';
 import {HomeRoutingModule} from './home-routing.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -11,7 +12,8 @@ import {HomeRoutingModule} from './home-routing.module';
     HomeRoutingModule,
     CommonModule,
     BudgetModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   exports: []
 })

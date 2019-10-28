@@ -3,12 +3,13 @@ import {StaticDataSource} from '../budget/static.datasource';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Genre, Sum} from '../budget/budget.model';
-import {AngularFireAuth} from 'angularfire2/auth';
 import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 // TODO controle input startBedrag
 // TODO tabel met vaste kosten om op het einde van de maand toe te voegen
 // TODO overzicht van alle rekeningen (spaarboek, start2save enz)
+// TODO inkomen
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  homeForm = new FormGroup({
+    amount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)])
+  });
 
   total$: Observable<number>;
 
@@ -27,6 +32,10 @@ export class HomeComponent implements OnInit {
   constructor(private service: StaticDataSource, private authService: AuthService, private router: Router) {
   }
 
+  get f() {
+    return this.homeForm.controls;
+  }
+
   ngOnInit() {
     this.startAmount$ = this.service.getStartAmount();
     this.sum$ = this.service.getTotalList().pipe(
@@ -36,7 +45,7 @@ export class HomeComponent implements OnInit {
         } else if (budget.genre === Genre.VISA_D) {
           total.visaDanny = +total.visaDanny + +budget.amount;
         } else if (budget.genre === Genre.VISA_N) {
-            total.visaNoella = +total.visaNoella + +budget.amount;
+          total.visaNoella = +total.visaNoella + +budget.amount;
         } else if (budget.genre === Genre.FIXED_CHARGES) {
           total.fixedCharges = +total.fixedCharges + +budget.amount;
         }
