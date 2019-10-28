@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    this.service.updpateStartAmount(this.homeForm.controls.amount.value);
+    this.service.updateStartAmount(this.homeForm.controls.amount.value);
   }
 
   ngOnInit() {

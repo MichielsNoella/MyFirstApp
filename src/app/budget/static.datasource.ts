@@ -32,7 +32,7 @@ export class StaticDataSource {
     });
   }
 
-  updpateStartAmount(inputStartAmount: string) {
+  updateStartAmount(inputStartAmount: string) {
     this.firebasedb.object('configApp').update({startAmount: inputStartAmount});
   }
 
