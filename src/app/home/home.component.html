@@ -97,7 +97,17 @@
         <div class="col-sm-8"
              [class.text-danger]="(result$ | async) < 0" [class.text-success]="(result$ | async) >= 0"> {{ result$ | async | currency:"EUR":"symbol":"2.2-2" }}</div>
       </div>
+
     </div>
+  </div>
+
+  <br>
+  <div class="container">
+      <div class="justify-content-sm-center col-sm-4">
+        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/monthlyCharges">
+          Maandelijkse kosten
+        </button>
+      </div>
   </div>
 
 </form>

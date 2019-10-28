@@ -5,12 +5,14 @@ import {VisaDannyPageComponent} from './visa-danny-page/visa-danny-page.componen
 import {VisaNoellaPageComponent} from './visa-noella-page/visa-noella-page.component';
 import {AuthGuard} from '../auth/auth.guard';
 import {FixedChargesComponent} from './fixed-charges/fixed-charges.component';
+import {MonthlyChargesComponent} from './monthly-charges/monthly-charges.component';
 
 const routes: Routes = [
   {path: 'shopping', component: ShoppingPageComponent, canActivate: [AuthGuard]},
   {path: 'visaDanny', component: VisaDannyPageComponent, canActivate: [AuthGuard]},
   {path: 'visaNoella', component: VisaNoellaPageComponent, canActivate: [AuthGuard]},
-  {path: 'fixedCharges', component: FixedChargesComponent, canActivate: [AuthGuard]}
+  {path: 'fixedCharges', component: FixedChargesComponent, canActivate: [AuthGuard]},
+  {path: 'monthlyCharges', component: MonthlyChargesComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

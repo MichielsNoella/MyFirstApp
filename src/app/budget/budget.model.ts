@@ -23,4 +23,5 @@ export enum Genre {
   VISA_D = 'VISA_D',
   VISA_N = 'VISA_N',
   FIXED_CHARGES = 'FIXED_CHARGES',
+  MONTHLY_CHARGES = 'MONTHLY_CHARGES'
 }
