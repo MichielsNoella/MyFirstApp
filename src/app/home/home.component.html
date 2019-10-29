@@ -14,7 +14,7 @@
         </div>
         <div class="col-sm">
           <input id="startAmount" class="form-control" type="text" formControlName="amount" required
-                 placeholder="start bedrag" value="{{startAmount$ | async }}" #inputStartAmount>
+                 placeholder="start bedrag" value="{{startAmount$ | async }}">
           <div *ngIf="f.amount.invalid && (f.amount.dirty || f.amount.touched)"
                class="alert alert-danger">
             <div *ngIf="f.amount.errors.pattern">

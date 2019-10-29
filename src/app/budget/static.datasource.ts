@@ -15,6 +15,7 @@ export class StaticDataSource {
   visaDannyRef: AngularFireList<Budget>;
   visaNoellaRef: AngularFireList<Budget>;
   fixedChargesRef: AngularFireList<Budget>;
+  monthlyChargesRef: AngularFireList<Budget>;
 
   constructor(private firebasedb: AngularFireDatabase) {
     this.budgetRef = this.firebasedb.list('budgets');
@@ -29,6 +30,9 @@ export class StaticDataSource {
     });
     this.fixedChargesRef = this.firebasedb.list('budgets', ref => {
       return ref.orderByChild('genre').equalTo(Genre.FIXED_CHARGES);
+    });
+    this.monthlyChargesRef = this.firebasedb.list('budgets', ref => {
+      return ref.orderByChild('genre').equalTo(Genre.MONTHLY_CHARGES);
     });
   }
 
@@ -90,20 +94,34 @@ export class StaticDataSource {
     );
   }
 
-  addShopping(value: any) {
+  getMonthlyChargesList() {
+    return this.monthlyChargesRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
+  }
+
+  addShopping(value: Budget) {
     this.shoppingsRef.push(value);
   }
 
-  addVisaDanny(value: any) {
+  addVisaDanny(value: Budget) {
     this.visaDannyRef.push(value);
   }
 
-  addVisaNoella(value: any) {
+  addVisaNoella(value: Budget) {
     this.visaNoellaRef.push(value);
   }
 
-  addFixedCharges(value: any) {
+  addFixedCharges(value: Budget) {
     this.fixedChargesRef.push(value);
+  }
+
+  addMonthlyCharges(value: Budget) {
+    this.monthlyChargesRef.push(value);
   }
 
   removeShopping(id: string) {
@@ -120,5 +138,9 @@ export class StaticDataSource {
 
   removeFixedCharges(id: string) {
     this.fixedChargesRef.remove(id);
+  }
+
+  removeMonthlyCharges(id: string) {
+    this.monthlyChargesRef.remove(id);
   }
 }

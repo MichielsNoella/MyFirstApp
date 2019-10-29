@@ -1,3 +1,108 @@
-<p>
-  monthly-charges works!
-</p>
+<h3 class="bg-primary p-1 text-white text-center">Maandelijkse kosten</h3>
+<br>
+
+<div class="container">
+  <div class="row justify-content-sm-end">
+    <div class="col-sm-1">
+      <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip"
+              data-placement="right" title="Home" routerLink="/home/home"><i class="fa fa-home fa-lg"></i></button>
+    </div>
+
+    <div class="col-sm-1">
+      <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip"
+              data-placement="right" title="Uitloggen" routerLink="/admin/login"><i
+        class="fa fa-sign-out fa-lg"></i></button>
+    </div>
+  </div>
+</div>
+<br>
+
+<form [formGroup]="monthlyForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="col-sm-1">
+      <h5>Nieuw</h5>
+    </div>
+    <br>
+
+    <div class="container">
+      <div class="row justify-content-sm-center">
+        <div class="col-sm-3">
+          <input id="purchaseDescription" class="form-control" type="text" formControlName="description" required
+                 placeholder="Winkel">
+          <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)"
+               class="alert alert-danger">
+            <div *ngIf="f.description.errors.required">
+              Name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <input id="purchaseAmount" class="form-control" type="text" formControlName="amount" required
+                 placeholder="Bedrag">
+          <div *ngIf="f.amount.invalid && (f.amount.dirty || f.amount.touched)"
+               class="alert alert-danger">
+            <div *ngIf="f.amount.errors.pattern">
+              No characters allowed
+            </div>
+            <div *ngIf="f.amount.errors.required">
+              Amount is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" formControlName="budgetDate"
+                   placeholder="Datum"
+                   name="dp" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <span class="input-group-text"  (click)="d.toggle()"><i class="fa fa-calendar fa-lg"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="input-group">
+            <input class="form-control" formControlName="extraComment" type="text">
+          </div>
+        </div>
+
+        <div class="col-sm-1">
+          <button type="submit" data-toggle="tooltip" data-placement="right" title="Voeg toe"
+                  [disabled]="!monthlyForm.valid"><i class="fa fa-plus fa-2x"></i></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
+<br>
+<div class="container">
+  <div class="container">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-6">Omschrijving</div>
+      <div class="col-sm-2">Bedrag</div>
+      <div class="col-sm-3">Datum</div>
+      <div class="col-sm-1">Verwijder</div>
+    </div>
+
+    <li class="list-group-item" *ngFor="let item of monthlyCharges">
+      <div class="row justify-content-sm-center">
+        <div class="col-sm-6">{{item.description}}</div>
+        <div class="col-sm-2"> {{item.amount}}</div>
+        <div class="col-sm-3"> {{item.budgetDate}}</div>
+        <div class="col-sm-1">
+        <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.id)">
+           <i class="fa fa-trash-o fa-lg"></i>
+         </span>
+        </div>
+<!--        TODO add buton to fixed charges-->
+<!--        TODO modify in monthly charges-->
+      </div>
+    </li>
+  </div>
+
+</div>
+
+<br>

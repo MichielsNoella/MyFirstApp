@@ -9,7 +9,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 // TODO tabel met vaste kosten om op het einde van de maand toe te voegen
 // TODO overzicht van alle rekeningen (spaarboek, start2save enz)
 // TODO inkomen
-
+// TODO pagination
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -55,15 +55,20 @@ export class HomeComponent implements OnInit {
           total.visaNoella = +total.visaNoella + +budget.amount;
         } else if (budget.genre === Genre.FIXED_CHARGES) {
           total.fixedCharges = +total.fixedCharges + +budget.amount;
+        } // else if (budget.genre === Genre.SALARY) {
+        // total.salary = +total.salary + +budget.amount;
+        // }
+        if (budget.genre !== Genre.MONTHLY_CHARGES) {
+          total.total = +total.total + +budget.amount;
         }
-        total.total = +total.total + +budget.amount;
+
         return total;
       }, new Sum()))
     );
 
     this.result$ = combineLatest(this.startAmount$, this.sum$).pipe(
       map(([startAmount, sum]) => {
-        return +startAmount - sum.total;
+        return +startAmount - sum.total; // + sum.salary;
       })
     );
   }
