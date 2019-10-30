@@ -11,10 +11,11 @@ import {VisaDannyPageComponent} from './visa-danny-page/visa-danny-page.componen
 import {VisaNoellaPageComponent} from './visa-noella-page/visa-noella-page.component';
 import {FixedChargesComponent} from './fixed-charges/fixed-charges.component';
 import {MonthlyChargesComponent} from './monthly-charges/monthly-charges.component';
+import { RevenuesComponent } from './revenues/revenues.component';
 
 @NgModule({
   declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaDannyPageComponent, VisaNoellaPageComponent,
-    FixedChargesComponent, MonthlyChargesComponent],
+    FixedChargesComponent, MonthlyChargesComponent, RevenuesComponent],
   imports: [
     CommonModule,
     BudgetRoutingModule,

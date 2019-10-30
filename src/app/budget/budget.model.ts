@@ -7,12 +7,17 @@ export class Budget {
   genre: Genre;
 }
 
+export class Revenues {
+  salary: number;
+  electricity: number;
+}
+
 export class Sum {
   shopping: number = 0;
   visaDanny: number = 0;
   visaNoella: number = 0;
   fixedCharges: number = 0;
-  salary = 0;
+  revenues: number = 0;
   total: number = 0;
 }
 
@@ -26,5 +31,6 @@ export enum Genre {
   VISA_N = 'VISA_N',
   FIXED_CHARGES = 'FIXED_CHARGES',
   MONTHLY_CHARGES = 'MONTHLY_CHARGES',
-  SALARY = 'SALARY'
+  SALARY = 'SALARY',
+  SOLAR_PANELS= 'SOLAR_PANELS'
 }

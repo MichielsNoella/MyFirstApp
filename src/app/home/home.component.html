@@ -97,17 +97,28 @@
         <div class="col-sm-8"
              [class.text-danger]="(result$ | async) < 0" [class.text-success]="(result$ | async) >= 0"> {{ result$ | async | currency:"EUR":"symbol":"2.2-2" }}</div>
       </div>
-
     </div>
-  </div>
 
-  <br>
-  <div class="container">
-      <div class="justify-content-sm-center col-sm-4">
+    <br>
+    <div class="row justify-content-sm-left">
+      <div class="col-sm-4">
         <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/monthlyCharges">
           Maandelijkse kosten
         </button>
       </div>
+    </div>
+    <br>
+
+    <div class="row justify-content-sm-center">
+      <div class="col-sm">
+        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/revenues">
+          Inkomsten
+        </button>
+      </div>
+      <div class="col-sm-8"> {{ (sum$ | async)?.revenues | currency:"EUR":"symbol":"2.2-2" }}</div>
+    </div>
+    <br>
+
   </div>
 
 </form>

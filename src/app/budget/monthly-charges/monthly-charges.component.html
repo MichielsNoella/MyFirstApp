@@ -69,8 +69,7 @@
       <div class="row justify-content-sm-center">
         <div class="col-sm-3">{{item.description}}</div>
         <div class="col-sm-2">
-          <input  class="form-control" type="text"  required
-                 value="{{item.amount}}">
+          <input  class="form-control" type="text"  required value="{{item.amount | currency:'EUR':'symbol':'2.2-2'}}">
         </div>
         <div class="col-sm-4">
           <input  class="form-control" type="text"  required

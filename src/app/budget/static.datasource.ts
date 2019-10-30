@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {root} from 'rxjs/internal-compatibility';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import {Budget, Genre} from './budget.model';
+import {Budget, Genre, Revenues} from './budget.model';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
@@ -16,6 +16,7 @@ export class StaticDataSource {
   visaNoellaRef: AngularFireList<Budget>;
   fixedChargesRef: AngularFireList<Budget>;
   monthlyChargesRef: AngularFireList<Budget>;
+  revenuesRef: AngularFireList<Revenues>;
 
   constructor(private firebasedb: AngularFireDatabase) {
     this.budgetRef = this.firebasedb.list('budgets');
@@ -33,6 +34,9 @@ export class StaticDataSource {
     });
     this.monthlyChargesRef = this.firebasedb.list('budgets', ref => {
       return ref.orderByChild('genre').equalTo(Genre.MONTHLY_CHARGES);
+    });
+    this.revenuesRef = this.firebasedb.list('budgets', ref => {
+      return ref.orderByChild('genre').equalTo(Genre.SALARY || Genre.SOLAR_PANELS);
     });
   }
 
@@ -104,6 +108,16 @@ export class StaticDataSource {
     );
   }
 
+  getRevenuesList() {
+    return this.revenuesRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
+  }
+
   addShopping(value: Budget) {
     this.shoppingsRef.push(value);
   }
@@ -160,4 +174,5 @@ export class StaticDataSource {
       genre: Genre.FIXED_CHARGES
     });
   }
+
 }

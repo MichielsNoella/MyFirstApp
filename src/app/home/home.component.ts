@@ -54,10 +54,12 @@ export class HomeComponent implements OnInit {
           total.visaNoella = +total.visaNoella + +budget.amount;
         } else if (budget.genre === Genre.FIXED_CHARGES) {
           total.fixedCharges = +total.fixedCharges + +budget.amount;
-        } // else if (budget.genre === Genre.SALARY) {
-        // total.salary = +total.salary + +budget.amount;
-        // }
-        if (budget.genre !== Genre.MONTHLY_CHARGES) {
+        } else if (budget.genre === Genre.SALARY || budget.genre === Genre.SOLAR_PANELS) {
+          total.revenues = +total.revenues + +budget.amount;
+        }
+
+        // tslint:disable-next-line:no-bitwise
+        if (budget.genre !== Genre.MONTHLY_CHARGES && budget.genre !== Genre.SOLAR_PANELS && budget.genre !== Genre.SALARY) {
           total.total = +total.total + +budget.amount;
         }
 
