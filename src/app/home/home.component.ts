@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StaticDataSource} from '../budget/static.datasource';
 import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Genre, Sum} from '../budget/budget.model';
+import {Genre, Sum, SumRevenues} from '../budget/budget.model';
 import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   total$: Observable<number>;
 
   sum$: Observable<Sum>; // {shopping: 0, visa: 0, total: 0}
+  sumRevenues$: Observable<SumRevenues>;
   startAmount$: Observable<string>;
 
   result$: Observable<number>;
@@ -44,6 +45,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.startAmount$ = this.service.getStartAmount();
+
     this.sum$ = this.service.getTotalList().pipe(
       map(order => order.reduce((total, budget) => {
         if (budget.genre === Genre.VARIOUS) {
@@ -54,22 +56,31 @@ export class HomeComponent implements OnInit {
           total.visaNoella = +total.visaNoella + +budget.amount;
         } else if (budget.genre === Genre.FIXED_CHARGES) {
           total.fixedCharges = +total.fixedCharges + +budget.amount;
-        } else if (budget.genre === Genre.SALARY || budget.genre === Genre.SOLAR_PANELS) {
-          total.revenues = +total.revenues + +budget.amount;
         }
 
-        // tslint:disable-next-line:no-bitwise
-        if (budget.genre !== Genre.MONTHLY_CHARGES && budget.genre !== Genre.SOLAR_PANELS && budget.genre !== Genre.SALARY) {
+        if (budget.genre !== Genre.MONTHLY_CHARGES) {
           total.total = +total.total + +budget.amount;
         }
-
         return total;
       }, new Sum()))
     );
 
-    this.result$ = combineLatest(this.startAmount$, this.sum$).pipe(
-      map(([startAmount, sum]) => {
-        return +startAmount - sum.total; // + sum.salary;
+    this.sumRevenues$ = this.service.getTotalListRevenues().pipe(
+      map(order => order.reduce((totalRevenues, revenues) => {
+        if (revenues.genre === Genre.SALARY) {
+          totalRevenues.revenues = +totalRevenues.revenues + +revenues.amount;
+        } else if (revenues.genre === Genre.SOLAR_PANELS) {
+          totalRevenues.revenues = +totalRevenues.revenues + +revenues.amount;
+        }
+        totalRevenues.totalRevenues = +totalRevenues.totalRevenues + +revenues.amount;
+
+        return totalRevenues;
+      }, new SumRevenues()))
+    );
+
+    this.result$ = combineLatest(this.startAmount$, this.sum$, this.sumRevenues$).pipe(
+      map(([startAmount, sum, sumRevenues]) => {
+        return +startAmount - sum.total + +sumRevenues.totalRevenues;
       })
     );
   }

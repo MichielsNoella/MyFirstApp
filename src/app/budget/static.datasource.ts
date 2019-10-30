@@ -35,7 +35,7 @@ export class StaticDataSource {
     this.monthlyChargesRef = this.firebasedb.list('budgets', ref => {
       return ref.orderByChild('genre').equalTo(Genre.MONTHLY_CHARGES);
     });
-    this.revenuesRef = this.firebasedb.list('budgets', ref => {
+    this.revenuesRef = this.firebasedb.list('revenues', ref => {
       return ref.orderByChild('genre').equalTo(Genre.SALARY || Genre.SOLAR_PANELS);
     });
   }
@@ -50,6 +50,16 @@ export class StaticDataSource {
 
   getTotalList(): Observable<Budget[]> {
     return this.budgetRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
+  }
+
+  getTotalListRevenues(): Observable<Revenues[]> {
+    return this.revenuesRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({id: c.payload.key, ...c.payload.val()})
@@ -136,6 +146,10 @@ export class StaticDataSource {
 
   addMonthlyCharges(value: Budget) {
     this.monthlyChargesRef.push(value);
+  }
+
+  addRevenues(value: Revenues) {
+    this.revenuesRef.push(value);
   }
 
   removeShopping(id: string) {

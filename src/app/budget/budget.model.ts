@@ -8,8 +8,8 @@ export class Budget {
 }
 
 export class Revenues {
-  salary: number;
-  electricity: number;
+  amount: number;
+  genre: Genre;
 }
 
 export class Sum {
@@ -17,8 +17,12 @@ export class Sum {
   visaDanny: number = 0;
   visaNoella: number = 0;
   fixedCharges: number = 0;
-  revenues: number = 0;
   total: number = 0;
+}
+
+export class SumRevenues {
+  revenues: number = 0;
+  totalRevenues: number = 0;
 }
 
 export class StartAmount {
@@ -32,5 +36,5 @@ export enum Genre {
   FIXED_CHARGES = 'FIXED_CHARGES',
   MONTHLY_CHARGES = 'MONTHLY_CHARGES',
   SALARY = 'SALARY',
-  SOLAR_PANELS= 'SOLAR_PANELS'
+  SOLAR_PANELS = 'SOLAR_PANELS'
 }

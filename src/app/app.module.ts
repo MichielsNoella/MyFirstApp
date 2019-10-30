@@ -22,8 +22,6 @@ import {AngularFireAuth} from 'angularfire2/auth';
     AngularFireDatabaseModule,
     ReactiveFormsModule,
     NgbModule
-    // BudgetModule,
-    // HomeModule
   ],
 
   providers: [AngularFireAuth],

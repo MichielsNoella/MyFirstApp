@@ -1,3 +1,47 @@
-<p>
-  revenues works!
-</p>
+<form [formGroup]="revenuesForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="col-sm-1">
+      <h5>Inkomsten</h5>
+    </div>
+    <br>
+
+    <div class="container">
+      <div class="row justify-content-sm-center">
+        <div class="col-sm-4">
+          <input id="purchaseDescription" class="form-control" type="text" formControlName="description" required
+                 placeholder="Inkomen">
+          <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)"
+               class="alert alert-danger">
+            <div *ngIf="f.description.errors.required">
+             Dit veld is verplicht.
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <input id="purchaseAmount" class="form-control" type="text" formControlName="amount" required
+                 placeholder="Bedrag">
+          <div *ngIf="f.amount.invalid && (f.amount.dirty || f.amount.touched)"
+               class="alert alert-danger">
+            <div *ngIf="f.amount.errors.pattern">
+             Geen karakters toegestaan
+            </div>
+            <div *ngIf="f.amount.errors.required">
+             Bedrag is verplicht
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" data-toggle="tooltip" data-placement="right" title="Voeg toe" [disabled]="!revenuesForm.valid"><i class="fa fa-plus fa-2x"></i></button>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Home"routerLink="/home/home" ><i class="fa fa-home fa-lg"></i></button>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Uitloggen"routerLink="/admin/login" ><i class="fa fa-sign-out fa-lg"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!--TODO voeg inkomsten toe op het einde van de maand zoals de vast kosten-->
+<!--TODO voeg genre toe bij een nieuwe inkomst-->

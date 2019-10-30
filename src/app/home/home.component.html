@@ -115,7 +115,7 @@
           Inkomsten
         </button>
       </div>
-      <div class="col-sm-8"> {{ (sum$ | async)?.revenues | currency:"EUR":"symbol":"2.2-2" }}</div>
+      <div class="col-sm-8"> {{ (sumRevenues$ | async)?.revenues | currency:"EUR":"symbol":"2.2-2" }}</div>
     </div>
     <br>
 
