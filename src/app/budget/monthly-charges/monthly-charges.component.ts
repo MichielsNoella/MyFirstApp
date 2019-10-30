@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Budget, Genre} from '../budget.model';
 import {StaticDataSource} from '../static.datasource';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -28,9 +28,7 @@ export class MonthlyChargesComponent implements OnInit {
   }
 
   constructor(
-    private service: StaticDataSource, private firebasedb: AngularFireDatabase
-  ) {
-  }
+    private service: StaticDataSource) { }
 
   ngOnInit() {
     this.service.getMonthlyChargesList().subscribe(budgets => {
@@ -46,19 +44,15 @@ export class MonthlyChargesComponent implements OnInit {
     this.monthlyForm.reset();
   }
 
-  getDirection() {
-    return Object.values(Genre);
-  }
-
   onDelete(id: string) {
     this.service.removeMonthlyCharges(id);
   }
 
   addFixedCharges(budget: Budget) {
-    this.firebasedb.database.ref().child('budgets').push().set({
-      description: budget.description,
-      amount: budget.amount,
-      genre: Genre.FIXED_CHARGES
-    });
+    this.service.newFixedCharges(budget);
+  }
+
+  modifyMonthlyCharges(item: Budget) {
+    this.service.modifyMonthlyCharges(item);
   }
 }

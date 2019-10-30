@@ -63,13 +63,19 @@
 </form>
 
 <br>
-<div class="container">
-  <div class="container">
 
+<div class="container">
     <li class="list-group-item" *ngFor="let item of monthlyCharges">
       <div class="row justify-content-sm-center">
-        <div class="col-sm-7">{{item.description}}</div>
-        <div class="col-sm-2"> {{item.amount}}</div>
+        <div class="col-sm-3">{{item.description}}</div>
+        <div class="col-sm-2">
+          <input  class="form-control" type="text"  required
+                 value="{{item.amount}}">
+        </div>
+        <div class="col-sm-4">
+          <input  class="form-control" type="text"  required
+                 value="{{item.extraComment}}">
+        </div>
         <div class="col-sm-1">
           <span class="hover-cursor text-danger pull-right" data-toggle="tooltip" data-placement="right" title="Voeg toe aan vaste lasten"
                 (click)="addFixedCharges(item)">
@@ -83,11 +89,8 @@
            </span>
         </div>
 
-<!--        TODO modify in monthly charges-->
       </div>
     </li>
-  </div>
 
 </div>
-
 <br>

@@ -42,7 +42,4 @@ export class BudgetAddComponent implements OnInit {
     this.budgetForm.reset();
   }
 
-  getDirection() {
-    return Object.values(Genre);
-  }
 }

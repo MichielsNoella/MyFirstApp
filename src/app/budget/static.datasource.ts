@@ -143,4 +143,21 @@ export class StaticDataSource {
   removeMonthlyCharges(id: string) {
     this.monthlyChargesRef.remove(id);
   }
+
+  modifyMonthlyCharges(item: Budget) {
+    console.log('item.id ' + item.id);
+    console.log(item.extraComment);
+    console.log(item.description);
+    console.log(item.budgetDate);
+    console.log(item.amount);
+    console.log(item.genre);
+  }
+
+  newFixedCharges(budget: Budget) {
+    this.firebasedb.database.ref().child('budgets').push().set({
+      description: budget.description,
+      amount: budget.amount,
+      genre: Genre.FIXED_CHARGES
+    });
+  }
 }
