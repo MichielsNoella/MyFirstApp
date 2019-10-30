@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Budget, Genre} from '../budget.model';
 import {StaticDataSource} from '../static.datasource';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'app-monthly-charges',
@@ -11,21 +12,23 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class MonthlyChargesComponent implements OnInit {
 
   monthlyCharges: Budget[];
+  // @Output() add: EventEmitter<Budget> = new EventEmitter<Budget>();
 
   monthlyForm = new FormGroup({
     description: new FormControl('', Validators.required),
     amount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
-    budgetDate: new FormControl(undefined),
     genre: new FormControl(Genre.MONTHLY_CHARGES),
     extraComment: new FormControl('')
   });
+
+  private budgets: string;
 
   get f() {
     return this.monthlyForm.controls;
   }
 
   constructor(
-    private service: StaticDataSource
+    private service: StaticDataSource, private firebasedb: AngularFireDatabase
   ) {
   }
 
@@ -39,13 +42,7 @@ export class MonthlyChargesComponent implements OnInit {
     if (this.monthlyForm.invalid) {
       return;
     }
-
-    if (this.monthlyForm.controls.budgetDate.value !== null) {
-      const d = this.monthlyForm.controls.budgetDate.value;
-      this.monthlyForm.controls.budgetDate.setValue(d.year + '-' + d.month + '-' + d.day);
-    }
     this.service.addMonthlyCharges(this.monthlyForm.value);
-
     this.monthlyForm.reset();
   }
 
@@ -55,5 +52,13 @@ export class MonthlyChargesComponent implements OnInit {
 
   onDelete(id: string) {
     this.service.removeMonthlyCharges(id);
+  }
+
+  addFixedCharges(budget: Budget) {
+    this.firebasedb.database.ref().child('budgets').push().set({
+      description: budget.description,
+      amount: budget.amount,
+      genre: Genre.FIXED_CHARGES
+    });
   }
 }
