@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Budget, Genre} from '../budget.model';
 import {StaticDataSource} from '../static.datasource';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'app-monthly-charges',
@@ -20,6 +19,13 @@ export class MonthlyChargesComponent implements OnInit {
     genre: new FormControl(Genre.MONTHLY_CHARGES),
     extraComment: new FormControl('')
   });
+  changeForm = new FormGroup({
+    description: new FormControl('', Validators.required),
+    amount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
+    genre: new FormControl(Genre.MONTHLY_CHARGES),
+    extraComment: new FormControl(''),
+    key: new FormControl('')
+  });
 
   private budgets: string;
 
@@ -28,7 +34,8 @@ export class MonthlyChargesComponent implements OnInit {
   }
 
   constructor(
-    private service: StaticDataSource) { }
+    private service: StaticDataSource) {
+  }
 
   ngOnInit() {
     this.service.getMonthlyChargesList().subscribe(budgets => {
@@ -42,6 +49,16 @@ export class MonthlyChargesComponent implements OnInit {
     }
     this.service.addMonthlyCharges(this.monthlyForm.value);
     this.monthlyForm.reset();
+  }
+
+  onSubmitChangeForm() {
+    console.log('onSubmitChangeForm');
+    // if (this.changeForm.invalid) {
+    //   return;
+    // }
+    // console.log(this.changeForm);
+    this.service.changMonthlyCharges(this.changeForm.value);
+    // this.monthlyForm.reset();
   }
 
   onDelete(id: string) {

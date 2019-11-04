@@ -189,4 +189,20 @@ export class StaticDataSource {
     });
   }
 
+  changMonthlyCharges(budget: Budget) {
+    console.log('changMonthlyCharges');
+    console.log('id : ' + budget.id);
+    console.log('amount : ' + budget.amount);
+    console.log('genre : ' + budget.genre);
+    console.log('extraComment : ' + budget.extraComment);
+    console.log('budgetDate : ' + budget.budgetDate);
+    console.log('description : ' + budget.description);
+    // const key = this.firebasedb.database.ref().child('budgets').key;
+    // const key = this.firebasedb.database.ref().child('budgets').push().key;
+    // console.log('key : ' + key);
+
+    // this.firebasedb.database.ref().child('/budgets/').update({amount: budget.amount});
+    // firebase.database().ref().child('/posts/' + newPostKey)
+    //   .set({ title: "New title", body: "This is the new body" });
+  }
 }
