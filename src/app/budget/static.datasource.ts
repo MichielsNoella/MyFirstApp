@@ -40,7 +40,7 @@ export class StaticDataSource {
       return ref.orderByChild('genre').equalTo(Genre.REVENUES );
     });
     this.monthlyRevenuesRef = this.firebasedb.list('revenues', ref => {
-      return ref.orderByChild('genre').equalTo(Genre.SALARY || Genre.SOLAR_PANELS );
+      return ref.orderByChild('genre').equalTo(Genre.SALARY || Genre.OTHER_REVENUES );
     });
   }
 
