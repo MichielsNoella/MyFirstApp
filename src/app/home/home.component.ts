@@ -67,20 +67,20 @@ export class HomeComponent implements OnInit {
 
     this.sumRevenues$ = this.service.getTotalListRevenues().pipe(
       map(order => order.reduce((totalRevenues, revenues) => {
-        if (revenues.genre === Genre.SALARY) {
-          totalRevenues.revenues = +totalRevenues.revenues + +revenues.amount;
-        } else if (revenues.genre === Genre.SOLAR_PANELS) {
+        // if (revenues.genre === Genre.SALARY) {
+        //   totalRevenues.monthlyRevenues = +totalRevenues.monthlyRevenues + +revenues.amount;
+        // }
+
+        if (revenues.genre === Genre.REVENUES) {
           totalRevenues.revenues = +totalRevenues.revenues + +revenues.amount;
         }
-        totalRevenues.totalRevenues = +totalRevenues.totalRevenues + +revenues.amount;
-
         return totalRevenues;
       }, new SumRevenues()))
     );
 
     this.result$ = combineLatest(this.startAmount$, this.sum$, this.sumRevenues$).pipe(
       map(([startAmount, sum, sumRevenues]) => {
-        return +startAmount - sum.total + +sumRevenues.totalRevenues;
+        return +startAmount - sum.total + +sumRevenues.revenues;
       })
     );
   }

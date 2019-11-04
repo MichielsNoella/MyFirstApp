@@ -10,7 +10,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class MonthlyRevenuesComponent implements OnInit {
 
-  revenues: Revenues[];
+  monthlyRevenues: Revenues[];
 
   monthlyRevenuesForm = new FormGroup({
     description: new FormControl('', Validators.required),
@@ -27,8 +27,8 @@ export class MonthlyRevenuesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getRevenuesList().subscribe(revenues => {
-      this.revenues = revenues;
+    this.service.getMonthlyRevenuesList().subscribe(revenues => {
+      this.monthlyRevenues = revenues;
     });
   }
 
@@ -37,8 +37,16 @@ export class MonthlyRevenuesComponent implements OnInit {
       return;
     }
 
-    this.service.addRevenues(this.monthlyRevenuesForm.value);
+    this.service.addMonthlyRevenues(this.monthlyRevenuesForm.value);
 
     this.monthlyRevenuesForm.reset();
+  }
+
+  addRevenues(revenues: Revenues) {
+    this.service.newRevenues(revenues);
+  }
+
+  onDelete(id: string) {
+    this.service.removeRevenues(id);
   }
 }

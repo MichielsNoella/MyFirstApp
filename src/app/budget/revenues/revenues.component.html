@@ -1,3 +1,38 @@
-<p>
-  revenues works!
-</p>
+<h3 class="bg-primary p-1 text-white text-center">Inkomsten</h3>
+<br>
+<div class="container">
+      <div class="row justify-content-sm-end">
+        <div class="col-sm-1">
+          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Home"routerLink="/home/home" ><i class="fa fa-home fa-lg"></i></button>
+        </div>
+        <div class="col-sm-1">
+          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Uitloggen"routerLink="/admin/login" ><i class="fa fa-sign-out fa-lg"></i></button>
+        </div>
+      </div>
+  </div>
+
+
+
+<br>
+<div class="container">
+  <div class="row justify-content-sm-center">
+    <div class="col-sm-6">Omschrijving</div>
+    <div class="col-sm-2">Bedrag</div>
+    <div class="col-sm-1">Verwijder</div>
+  </div>
+
+  <li class="list-group-item" *ngFor="let item of revenues">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-6">{{item.description}}</div>
+      <div class="col-sm-2"> {{item.amount}}</div>
+      <div class="col-sm-1">
+        <span class="hover-cursor text-danger pull-right" (click)="deleteRevenues(item.id)">
+           <i class="fa fa-trash-o fa-lg"></i>
+         </span>
+      </div>
+    </div>
+  </li>
+</div>
+
+
+

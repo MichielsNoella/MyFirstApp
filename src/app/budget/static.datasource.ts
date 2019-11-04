@@ -17,6 +17,7 @@ export class StaticDataSource {
   fixedChargesRef: AngularFireList<Budget>;
   monthlyChargesRef: AngularFireList<Budget>;
   revenuesRef: AngularFireList<Revenues>;
+  monthlyRevenuesRef: AngularFireList<Revenues>;
 
   constructor(private firebasedb: AngularFireDatabase) {
     this.budgetRef = this.firebasedb.list('budgets');
@@ -36,7 +37,10 @@ export class StaticDataSource {
       return ref.orderByChild('genre').equalTo(Genre.MONTHLY_CHARGES);
     });
     this.revenuesRef = this.firebasedb.list('revenues', ref => {
-      return ref.orderByChild('genre').equalTo(Genre.SALARY || Genre.SOLAR_PANELS);
+      return ref.orderByChild('genre').equalTo(Genre.REVENUES );
+    });
+    this.monthlyRevenuesRef = this.firebasedb.list('revenues', ref => {
+      return ref.orderByChild('genre').equalTo(Genre.SALARY || Genre.SOLAR_PANELS );
     });
   }
 
@@ -128,6 +132,16 @@ export class StaticDataSource {
     );
   }
 
+  getMonthlyRevenuesList() {
+    return this.monthlyRevenuesRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
+  }
+
   addShopping(value: Budget) {
     this.shoppingsRef.push(value);
   }
@@ -148,8 +162,8 @@ export class StaticDataSource {
     this.monthlyChargesRef.push(value);
   }
 
-  addRevenues(value: Revenues) {
-    this.revenuesRef.push(value);
+  addMonthlyRevenues(value: Revenues) {
+    this.monthlyRevenuesRef.push(value);
   }
 
   removeShopping(id: string) {
@@ -204,5 +218,21 @@ export class StaticDataSource {
     // this.firebasedb.database.ref().child('/budgets/').update({amount: budget.amount});
     // firebase.database().ref().child('/posts/' + newPostKey)
     //   .set({ title: "New title", body: "This is the new body" });
+  }
+
+  newRevenues(revenues: Revenues) {
+    this.firebasedb.database.ref().child('revenues').push().set({
+      description: revenues.description,
+      amount: revenues.amount,
+      genre: Genre.REVENUES
+    });
+  }
+
+  removeRevenues(id: string) {
+    this.revenuesRef.remove(id);
+  }
+
+  removeMonthlyRevenues(id: string) {
+    this.monthlyRevenuesRef.remove(id);
   }
 }
