@@ -7,7 +7,7 @@ import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 // TODO overzicht van alle rekeningen (spaarboek, start2save enz)
-// TODO inkomen
+
 // TODO pagination
 @Component({
   selector: 'app-home',
