@@ -6,6 +6,7 @@ import {VisaNoellaPageComponent} from './visa-noella-page/visa-noella-page.compo
 import {AuthGuard} from '../auth/auth.guard';
 import {FixedChargesComponent} from './fixed-charges/fixed-charges.component';
 import {MonthlyChargesComponent} from './monthly-charges/monthly-charges.component';
+import {MonthlyRevenuesComponent} from './monthly-revenues/monthly-revenues.component';
 import {RevenuesComponent} from './revenues/revenues.component';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'visaNoella', component: VisaNoellaPageComponent, canActivate: [AuthGuard]},
   {path: 'fixedCharges', component: FixedChargesComponent, canActivate: [AuthGuard]},
   {path: 'monthlyCharges', component: MonthlyChargesComponent, canActivate: [AuthGuard]},
+  {path: 'monthlyRevenues', component: MonthlyRevenuesComponent, canActivate: [AuthGuard]},
   {path: 'revenues', component: RevenuesComponent, canActivate: [AuthGuard]}
 ];
 

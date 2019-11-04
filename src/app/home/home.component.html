@@ -72,13 +72,24 @@
       <br>
 
       <div class="row justify-content-sm-center">
+      <div class="col-sm">
+        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold"
+                routerLink="/budget/fixedCharges">
+          Vaste kosten
+        </button>
+      </div>
+      <div class="col-sm-8"> {{ (sum$ | async)?.fixedCharges | currency:"EUR":"symbol":"2.2-2" }}</div>
+    </div>
+      <br>
+
+      <div class="row justify-content-sm-center">
         <div class="col-sm">
           <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold"
-                  routerLink="/budget/fixedCharges">
-            Vaste kosten
+                  routerLink="/budget/revenues">
+            Inkomsten
           </button>
         </div>
-        <div class="col-sm-8"> {{ (sum$ | async)?.fixedCharges | currency:"EUR":"symbol":"2.2-2" }}</div>
+        <div class="col-sm-8"> {{ (sumRevenues$ | async)?.revenues | currency:"EUR":"symbol":"2.2-2" }}</div>
       </div>
       <br>
 
@@ -109,13 +120,12 @@
     </div>
     <br>
 
-    <div class="row justify-content-sm-center">
-      <div class="col-sm">
-        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/revenues">
+    <div class="row justify-content-sm-left">
+      <div class="col-sm-4">
+        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/monthlyRevenues">
           Inkomsten
         </button>
       </div>
-      <div class="col-sm-8"> {{ (sumRevenues$ | async)?.revenues | currency:"EUR":"symbol":"2.2-2" }}</div>
     </div>
     <br>
 
