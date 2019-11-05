@@ -186,15 +186,6 @@ export class StaticDataSource {
     this.monthlyChargesRef.remove(id);
   }
 
-  modifyMonthlyCharges(item: Budget) {
-    console.log('item.id ' + item.id);
-    console.log(item.extraComment);
-    console.log(item.description);
-    console.log(item.budgetDate);
-    console.log(item.amount);
-    console.log(item.genre);
-  }
-
   newFixedCharges(budget: Budget) {
     this.firebasedb.database.ref().child('budgets').push().set({
       description: budget.description,
@@ -203,29 +194,13 @@ export class StaticDataSource {
     });
   }
 
-  changMonthlyCharges(budget: Budget) {
-    console.log('changMonthlyCharges');
-    console.log('id : ' + budget.id);
-    console.log('amount : ' + budget.amount);
-    console.log('genre : ' + budget.genre);
-    console.log('extraComment : ' + budget.extraComment);
-    console.log('budgetDate : ' + budget.budgetDate);
-    console.log('description : ' + budget.description);
-    // const key = this.firebasedb.database.ref().child('budgets').key;
-    // const key = this.firebasedb.database.ref().child('budgets').push().key;
-    // console.log('key : ' + key);
-
-    // this.firebasedb.database.ref().child('/budgets/').update({amount: budget.amount});
-    // firebase.database().ref().child('/posts/' + newPostKey)
-    //   .set({ title: "New title", body: "This is the new body" });
+  changeMonthlyCharges(budget: Budget) {
+    this.monthlyChargesRef.update(budget.id, budget);
   }
 
   newRevenues(revenues: Revenues) {
-    this.firebasedb.database.ref().child('revenues').push().set({
-      description: revenues.description,
-      amount: revenues.amount,
-      genre: Genre.REVENUES
-    });
+    revenues.genre = Genre.REVENUES;
+    this.revenuesRef.push(revenues);
   }
 
   removeRevenues(id: string) {

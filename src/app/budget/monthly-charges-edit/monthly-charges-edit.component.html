@@ -1,0 +1,44 @@
+<form [formGroup]="changeForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-3">
+        <input class="form-control" formControlName="description">
+      </div>
+      <div class="col-sm-2">
+        <input class="form-control" formControlName="amount" type="text" required>
+        <div *ngIf="f.amount.invalid && (f.amount.dirty || f.amount.touched)"
+             class="alert alert-danger">
+          <div *ngIf="f.amount.errors.pattern">
+            Karakters niet toegestaan
+          </div>
+          <div *ngIf="f.amount.errors.required">
+            Bedrag verplicht
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <input class="form-control" formControlName="extraComment" type="text">
+      </div>
+      <div class="col-sm-1">
+                  <span class="hover-cursor text-danger pull-right" data-toggle="tooltip" data-placement="right"
+                        title="Voeg toe aan vaste lasten"
+                        (click)="addFixedCharges(monthlyCharges)">
+                     <i class="fa fa-plus fa-lg"></i>
+                   </span>
+      </div>
+      <div class="col-sm-1">
+        <button class="hover-cursor text-danger pull-right" type="submit" data-toggle="tooltip" data-placement="right"
+                title="Wijzig">
+          <i class="fa fa-edit fa-lg"></i></button>
+      </div>
+      <div class="col-sm-1">
+                <span class="hover-cursor text-danger pull-right" data-toggle="tooltip" data-placement="right"
+                      title="Verwijder"
+                      (click)="onDelete(monthlyCharges.id)">
+                   <i class="fa fa-trash-o fa-lg"></i>
+                 </span>
+      </div>
+
+    </div>
+  </div>
+</form>

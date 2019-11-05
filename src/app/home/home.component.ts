@@ -67,10 +67,6 @@ export class HomeComponent implements OnInit {
 
     this.sumRevenues$ = this.service.getTotalListRevenues().pipe(
       map(order => order.reduce((totalRevenues, revenues) => {
-        // if (revenues.genre === Genre.SALARY) {
-        //   totalRevenues.monthlyRevenues = +totalRevenues.monthlyRevenues + +revenues.amount;
-        // }
-
         if (revenues.genre === Genre.REVENUES) {
           totalRevenues.revenues = +totalRevenues.revenues + +revenues.amount;
         }

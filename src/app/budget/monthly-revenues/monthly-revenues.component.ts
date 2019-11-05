@@ -40,6 +40,7 @@ export class MonthlyRevenuesComponent implements OnInit {
     this.service.addMonthlyRevenues(this.monthlyRevenuesForm.value);
 
     this.monthlyRevenuesForm.reset();
+    this.f.genre.setValue(Genre.SALARY);
   }
 
   addRevenues(revenues: Revenues) {

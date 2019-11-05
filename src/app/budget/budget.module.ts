@@ -13,10 +13,11 @@ import {FixedChargesComponent} from './fixed-charges/fixed-charges.component';
 import {MonthlyChargesComponent} from './monthly-charges/monthly-charges.component';
 import {MonthlyRevenuesComponent} from './monthly-revenues/monthly-revenues.component';
 import { RevenuesComponent } from './revenues/revenues.component';
+import { MonthlyChargesEditComponent } from './monthly-charges-edit/monthly-charges-edit.component';
 
 @NgModule({
   declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaDannyPageComponent, VisaNoellaPageComponent,
-    FixedChargesComponent, MonthlyChargesComponent, MonthlyRevenuesComponent, RevenuesComponent],
+    FixedChargesComponent, MonthlyChargesComponent, MonthlyRevenuesComponent, RevenuesComponent, MonthlyChargesEditComponent],
   imports: [
     CommonModule,
     BudgetRoutingModule,
