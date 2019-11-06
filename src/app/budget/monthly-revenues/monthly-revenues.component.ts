@@ -15,8 +15,7 @@ export class MonthlyRevenuesComponent implements OnInit {
   monthlyRevenuesForm = new FormGroup({
     description: new FormControl('', Validators.required),
     amount: new FormControl('', [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
-    // TODO bepaal genre
-    genre: new FormControl(Genre.SALARY)
+    genre: new FormControl(Genre.MONTHLY_REVENUES)
   });
 
   get f() {
@@ -40,11 +39,11 @@ export class MonthlyRevenuesComponent implements OnInit {
     this.service.addMonthlyRevenues(this.monthlyRevenuesForm.value);
 
     this.monthlyRevenuesForm.reset();
-    this.f.genre.setValue(Genre.SALARY);
+    this.f.genre.setValue(Genre.MONTHLY_REVENUES);
   }
 
   addRevenues(revenues: Revenues) {
-    this.service.newRevenues(revenues);
+    this.service.newMonthlyRevenues(revenues);
   }
 
   onDelete(id: string) {

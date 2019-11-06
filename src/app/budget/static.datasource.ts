@@ -37,10 +37,10 @@ export class StaticDataSource {
       return ref.orderByChild('genre').equalTo(Genre.MONTHLY_CHARGES);
     });
     this.revenuesRef = this.firebasedb.list('revenues', ref => {
-      return ref.orderByChild('genre').equalTo(Genre.REVENUES );
+      return ref.orderByChild('genre').equalTo(Genre.REVENUES);
     });
     this.monthlyRevenuesRef = this.firebasedb.list('revenues', ref => {
-      return ref.orderByChild('genre').equalTo(Genre.SALARY || Genre.OTHER_REVENUES );
+      return ref.orderByChild('genre').equalTo(Genre.MONTHLY_REVENUES);
     });
   }
 
@@ -187,20 +187,23 @@ export class StaticDataSource {
   }
 
   newFixedCharges(budget: Budget) {
-    this.firebasedb.database.ref().child('budgets').push().set({
-      description: budget.description,
-      amount: budget.amount,
-      genre: Genre.FIXED_CHARGES
-    });
+    budget.genre = Genre.FIXED_CHARGES;
+    budget.id = null;
+    this.fixedChargesRef.push(budget);
+  }
+
+  newMonthlyRevenues(revenues: Revenues) {
+    revenues.genre = Genre.REVENUES;
+    revenues.id = null;
+    this.revenuesRef.push(revenues);
   }
 
   changeMonthlyCharges(budget: Budget) {
     this.monthlyChargesRef.update(budget.id, budget);
   }
 
-  newRevenues(revenues: Revenues) {
-    revenues.genre = Genre.REVENUES;
-    this.revenuesRef.push(revenues);
+  changeMonthlyRevenues(budget: Budget) {
+    this.monthlyRevenuesRef.update(budget.id, budget);
   }
 
   removeRevenues(id: string) {
@@ -210,4 +213,5 @@ export class StaticDataSource {
   removeMonthlyRevenues(id: string) {
     this.monthlyRevenuesRef.remove(id);
   }
+
 }
