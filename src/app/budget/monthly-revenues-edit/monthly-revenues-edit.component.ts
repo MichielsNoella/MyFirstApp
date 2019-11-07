@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Budget} from '../budget.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StaticDataSource} from '../static.datasource';
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-monthly-revenues-edit',
@@ -11,6 +13,11 @@ import {StaticDataSource} from '../static.datasource';
 export class MonthlyRevenuesEditComponent implements OnInit {
 
   @Input() monthlyRevenues: Budget;
+
+  private success = new Subject<string>();
+
+  staticAlertClosed = false;
+  successMessage: string;
 
   changeForm: FormGroup;
 
@@ -29,6 +36,13 @@ export class MonthlyRevenuesEditComponent implements OnInit {
       extraComment: new FormControl(this.monthlyRevenues.extraComment),
       id: new FormControl(this.monthlyRevenues.id)
     });
+
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+
+    this.success.subscribe((message) => this.successMessage = message);
+    this.success.pipe(
+      debounceTime(5000)
+    ).subscribe(() => this.successMessage = null);
   }
 
   onSubmit() {
@@ -36,6 +50,7 @@ export class MonthlyRevenuesEditComponent implements OnInit {
       return;
     }
     this.service.changeMonthlyRevenues(this.changeForm.value);
+    this.success.next('Wijziging gedaan');
   }
 
   addMonthlyRevenues(budget: Budget) {
@@ -48,5 +63,6 @@ export class MonthlyRevenuesEditComponent implements OnInit {
 
   newMonthlyRevenues(monthlyRevenues: Budget) {
     this.service.newMonthlyRevenues(monthlyRevenues);
+    this.success.next('Bedrag toegevoegd');
   }
 }

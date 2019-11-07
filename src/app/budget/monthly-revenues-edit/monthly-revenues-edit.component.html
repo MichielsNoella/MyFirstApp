@@ -1,7 +1,7 @@
 <form [formGroup]="changeForm" (ngSubmit)="onSubmit()">
   <div class="container">
     <div class="row justify-content-sm-center">
-      <div class="col-sm-3">
+      <div class="col-sm-2">
         <input class="form-control" formControlName="description">
       </div>
       <div class="col-sm-2">
@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-2">
         <input class="form-control" formControlName="extraComment" type="text">
       </div>
       <div class="col-sm-1">
@@ -29,7 +29,7 @@
       <div class="col-sm-1">
         <button class="hover-cursor text-danger pull-right" type="submit" data-toggle="tooltip" data-placement="right"
                 title="Wijzig">
-          <i class="fa fa-edit fa-lg"></i></button>
+          <i class="fa fa-pencil fa-lg"></i></button>
       </div>
       <div class="col-sm-1">
           <span class="hover-cursor text-danger pull-right" data-toggle="tooltip" data-placement="right"
@@ -38,10 +38,11 @@
              <i class="fa fa-trash-o fa-lg"></i>
            </span>
       </div>
-
+      <div class="col-sm-3">
+        <ngb-alert *ngIf="successMessage" type="success"
+                   (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+      </div>
     </div>
-    <!--  </li>-->
-
   </div>
 </form>
 

@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Budget} from '../budget.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StaticDataSource} from '../static.datasource';
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-monthly-charges-edit',
@@ -11,6 +13,11 @@ import {StaticDataSource} from '../static.datasource';
 export class MonthlyChargesEditComponent implements OnInit {
 
   @Input() monthlyCharges: Budget;
+
+  private success = new Subject<string>();
+
+  staticAlertClosed = false;
+  successMessage: string;
 
   changeForm: FormGroup;
 
@@ -29,6 +36,13 @@ export class MonthlyChargesEditComponent implements OnInit {
       extraComment: new FormControl(this.monthlyCharges.extraComment),
       id: new FormControl(this.monthlyCharges.id)
     });
+
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+
+    this.success.subscribe((message) => this.successMessage = message);
+    this.success.pipe(
+      debounceTime(5000)
+    ).subscribe(() => this.successMessage = null);
   }
 
   onSubmit() {
@@ -36,13 +50,16 @@ export class MonthlyChargesEditComponent implements OnInit {
       return;
     }
     this.service.changeMonthlyCharges(this.changeForm.value);
+    this.success.next('Wijziging gedaan');
   }
 
   addFixedCharges(budget: Budget) {
     this.service.newFixedCharges(budget);
+    this.success.next(`Bedrag toegevoegd`);
   }
 
   onDelete(id: string) {
     this.service.removeMonthlyCharges(id);
   }
+
 }
