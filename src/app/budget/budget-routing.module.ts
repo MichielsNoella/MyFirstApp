@@ -17,8 +17,7 @@ const routes: Routes = [
   {path: 'fixedCharges', component: FixedChargesComponent, canActivate: [AuthGuard]},
   {path: 'monthlyCharges', component: MonthlyChargesComponent, canActivate: [AuthGuard]},
   {path: 'monthlyRevenues', component: MonthlyRevenuesComponent, canActivate: [AuthGuard]},
-  {path: 'revenues', component: RevenuesComponent, canActivate: [AuthGuard]},
-  {path: 'other', component: OtherComponent, canActivate: [AuthGuard]}
+  {path: 'revenues', component: RevenuesComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
