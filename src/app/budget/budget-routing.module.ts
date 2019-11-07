@@ -8,6 +8,7 @@ import {FixedChargesComponent} from './fixed-charges/fixed-charges.component';
 import {MonthlyChargesComponent} from './monthly-charges/monthly-charges.component';
 import {MonthlyRevenuesComponent} from './monthly-revenues/monthly-revenues.component';
 import {RevenuesComponent} from './revenues/revenues.component';
+import {OtherComponent} from '../other/other.component';
 
 const routes: Routes = [
   {path: 'shopping', component: ShoppingPageComponent, canActivate: [AuthGuard]},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'fixedCharges', component: FixedChargesComponent, canActivate: [AuthGuard]},
   {path: 'monthlyCharges', component: MonthlyChargesComponent, canActivate: [AuthGuard]},
   {path: 'monthlyRevenues', component: MonthlyRevenuesComponent, canActivate: [AuthGuard]},
-  {path: 'revenues', component: RevenuesComponent, canActivate: [AuthGuard]}
+  {path: 'revenues', component: RevenuesComponent, canActivate: [AuthGuard]},
+  {path: 'other', component: OtherComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

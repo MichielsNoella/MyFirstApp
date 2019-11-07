@@ -5,10 +5,12 @@ import {BudgetModule} from '../budget/budget.module';
 import {HomeComponent} from './home.component';
 import {HomeRoutingModule} from './home-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {OtherModule} from '../other/other.module';
 
 @NgModule({
   declarations: [HomeComponent],
   imports: [
+    OtherModule,
     HomeRoutingModule,
     CommonModule,
     BudgetModule,
