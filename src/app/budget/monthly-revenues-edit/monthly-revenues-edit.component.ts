@@ -50,7 +50,6 @@ export class MonthlyRevenuesEditComponent implements OnInit {
       return;
     }
     this.service.changeMonthlyRevenues(this.changeForm.value);
-    this.success.next('Wijziging gedaan');
   }
 
   addMonthlyRevenues(budget: Budget) {

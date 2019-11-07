@@ -50,7 +50,6 @@ export class MonthlyChargesEditComponent implements OnInit {
       return;
     }
     this.service.changeMonthlyCharges(this.changeForm.value);
-    this.success.next('Wijziging gedaan');
   }
 
   addFixedCharges(budget: Budget) {
