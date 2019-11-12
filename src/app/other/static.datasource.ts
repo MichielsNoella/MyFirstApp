@@ -4,7 +4,6 @@ import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {map} from 'rxjs/operators';
 import {Genre, Other} from './other.model';
 import {Observable} from 'rxjs';
-import {Budget} from '../budget/budget.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +12,7 @@ export class StaticDataSource {
 
   otherRef: AngularFireList<Other>;
   startToSaveNoellaRef: AngularFireList<Other>;
+  newAmount: string;
 
   constructor(private firebasedb: AngularFireDatabase) {
     this.otherRef = this.firebasedb.list('other');
@@ -40,6 +40,7 @@ export class StaticDataSource {
       )
     );
   }
+
   // updateStartAmount(inputStartAmount: string) {
   //   this.firebasedb.object('configApp').update({startAmount: inputStartAmount});
   // }
@@ -210,4 +211,9 @@ export class StaticDataSource {
   //   this.monthlyRevenuesRef.remove(id);
   // }
 
+  changeStartToSaveNoella(other: Other) {
+    const id = other.id;
+    other.id = null;
+    this.startToSaveNoellaRef.update(id, other);
+  }
 }

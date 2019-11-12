@@ -20,12 +20,17 @@
     <br>
 
     <div class="row justify-content-sm-center">
-      <div class="col-sm">
-        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/shopping">
+      <div class="col-sm-4">
+        <button class="btn btn-lg btn-outline-primary btn-block bg-warning font-weight-bold">
           StartToSaveNoella
         </button>
       </div>
-      <div class="col-sm-8"> {{ (sum$ | async)?.startToSaveNoella | currency:"EUR":"symbol":"2.2-2" }}</div>
+<!--      <div class="col-sm-8"> {{ (sum$ | async)?.startToSaveNoella | currency:"EUR":"symbol":"2.2-2" }}</div>-->
+      <div class="col-sm-8">
+        <li class="list-group-item" *ngFor="let item of startToSaveNoella">
+          <app-start-to-save-noella-edit [startToSaveNoella]="item"></app-start-to-save-noella-edit>
+        </li>
+      </div>
     </div>
     <br>
 

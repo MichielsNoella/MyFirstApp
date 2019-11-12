@@ -9,7 +9,6 @@ export enum Genre {
 
 export class Other {
   id: string;
-  description: string;
   amount: number;
   genre: Genre;
 }

@@ -3,7 +3,7 @@ import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {Genre, Sum} from './other.model';
+import {Genre, Other, Sum} from './other.model';
 import {StaticDataSource} from './static.datasource';
 
 @Component({
@@ -14,6 +14,7 @@ import {StaticDataSource} from './static.datasource';
 export class OtherComponent implements OnInit {
 
   sum$: Observable<Sum>;
+  startToSaveNoella: Other[];
 
   constructor(private service: StaticDataSource, private authService: AuthService, private router: Router) {
   }
@@ -31,6 +32,10 @@ export class OtherComponent implements OnInit {
         return total;
       }, new Sum()))
     );
+
+    this.service.getStartToSaveNoellaList().subscribe(other => {
+      this.startToSaveNoella = other;
+    });
   }
 
   /* Sign out */
