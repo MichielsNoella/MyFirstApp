@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {OtherComponent} from './other.component';
 import {OtherRoutingModule} from './other-routing.module';
 import {AccountsModule} from '../accounts/accounts.module';
-import {BudgetModule} from '../budget/budget.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
 

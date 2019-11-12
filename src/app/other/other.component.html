@@ -1,7 +1,33 @@
-<div class="row justify-content-sm-center">
-  <div class="col-sm">
-    <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/accounts/startToSaveNoella">
-      Start2Save Noella
-    </button>
+<div class="container ">
+  <div class="row justify-content-sm-center">
+    <div class="col bg-info text-white text-lg-center">
+      <a class="navbar-brand"><b>Andere rekeningen</b></a>
+    </div>
+  </div>
+  <br>
+
+  <div class="container">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-1">
+        <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Home"routerLink="/home/home" ><i class="fa fa-home fa-lg"></i></button>
+      </div>
+      <div class="col-sm-2 font-weight-bold">
+        <button class="btn btn-outline-primary btn-block bg-light font-weight-bold " data-toggle="tooltip"
+                data-placement="right" title="Uitloggen" (click)="signOut()"><i class="fa fa-sign-out fa-lg"></i>
+        </button>
+      </div>
+    </div>
+    <br>
+
+    <div class="row justify-content-sm-center">
+      <div class="col-sm">
+        <button class="btn btn-outline-primary btn-block bg-warning font-weight-bold" routerLink="/budget/shopping">
+          StartToSaveNoella
+        </button>
+      </div>
+      <div class="col-sm-8"> {{ (sum$ | async)?.startToSaveNoella | currency:"EUR":"symbol":"2.2-2" }}</div>
+    </div>
+    <br>
+
   </div>
 </div>
