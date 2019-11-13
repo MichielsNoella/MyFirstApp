@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Other} from '../other.model';
 import {StaticDataSource} from '../static.datasource';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
+import {Account} from '../accounts.model';
 
 @Component({
   selector: 'app-start-to-save-noella-edit',
@@ -12,7 +12,7 @@ import {debounceTime} from 'rxjs/operators';
 })
 export class StartToSaveNoellaEditComponent implements OnInit {
 
-  @Input() startToSaveNoella: Other;
+  @Input() startToSaveNoella: Account;
 
   private success = new Subject<string>();
 

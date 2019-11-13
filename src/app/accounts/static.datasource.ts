@@ -2,27 +2,27 @@ import {Injectable} from '@angular/core';
 import {root} from 'rxjs/internal-compatibility';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {map} from 'rxjs/operators';
-import {Genre, Other} from './other.model';
 import {Observable} from 'rxjs';
+import {Genre, Account} from './accounts.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StaticDataSource {
 
-  otherRef: AngularFireList<Other>;
-  startToSaveNoellaRef: AngularFireList<Other>;
+  accountRef: AngularFireList<Account>;
+  startToSaveNoellaRef: AngularFireList<Account>;
   newAmount: string;
 
   constructor(private firebasedb: AngularFireDatabase) {
-    this.otherRef = this.firebasedb.list('other');
-    this.startToSaveNoellaRef = this.firebasedb.list('other', ref => {
+    this.accountRef = this.firebasedb.list('accounts');
+    this.startToSaveNoellaRef = this.firebasedb.list('accounts', ref => {
       return ref.orderByChild('genre').equalTo(Genre.START_TO_SAVE_NOELLA);
     });
   }
 
-  getTotalList(): Observable<Other[]> {
-    return this.otherRef.snapshotChanges().pipe(
+  getTotalList(): Observable<Account[]> {
+    return this.accountRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({id: c.payload.key, ...c.payload.val()})
@@ -211,9 +211,9 @@ export class StaticDataSource {
   //   this.monthlyRevenuesRef.remove(id);
   // }
 
-  changeStartToSaveNoella(other: Other) {
-    const id = other.id;
-    other.id = null;
-    this.startToSaveNoellaRef.update(id, other);
+  changeStartToSaveNoella(account: Account) {
+    const id = account.id;
+    account.id = null;
+    this.startToSaveNoellaRef.update(id, account);
   }
 }

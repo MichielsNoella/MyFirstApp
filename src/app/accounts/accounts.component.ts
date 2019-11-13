@@ -3,18 +3,18 @@ import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {Genre, Other, Sum} from './other.model';
 import {StaticDataSource} from './static.datasource';
+import {Genre, Account, Sum} from './accounts.model';
 
 @Component({
-  selector: 'app-other',
-  templateUrl: './other.component.html',
-  styleUrls: ['./other.component.css']
+  selector: 'app-accounts',
+  templateUrl: './accounts.component.html',
+  styleUrls: ['./accounts.component.css']
 })
-export class OtherComponent implements OnInit {
+export class AccountsComponent implements OnInit {
 
   sum$: Observable<Sum>;
-  startToSaveNoella: Other[];
+  startToSaveNoella: Account[];
 
   constructor(private service: StaticDataSource, private authService: AuthService, private router: Router) {
   }
@@ -22,19 +22,19 @@ export class OtherComponent implements OnInit {
   ngOnInit() {
 
     this.sum$ = this.service.getTotalList().pipe(
-      map(order => order.reduce((total, other) => {
-        if (other.genre === Genre.START_TO_SAVE_NOELLA) {
-          total.startToSaveNoella = +total.startToSaveNoella + +other.amount;
+      map(order => order.reduce((total, account) => {
+        if (account.genre === Genre.START_TO_SAVE_NOELLA) {
+          total.startToSaveNoella = +total.startToSaveNoella + +account.amount;
         }
 
-        total.total = +total.total + +other.amount;
+        total.total = +total.total + +account.amount;
 
         return total;
       }, new Sum()))
     );
 
-    this.service.getStartToSaveNoellaList().subscribe(other => {
-      this.startToSaveNoella = other;
+    this.service.getStartToSaveNoellaList().subscribe(account => {
+      this.startToSaveNoella = account;
     });
   }
 

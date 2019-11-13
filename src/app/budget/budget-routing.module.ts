@@ -8,7 +8,6 @@ import {FixedChargesComponent} from './fixed-charges/fixed-charges.component';
 import {MonthlyChargesComponent} from './monthly-charges/monthly-charges.component';
 import {MonthlyRevenuesComponent} from './monthly-revenues/monthly-revenues.component';
 import {RevenuesComponent} from './revenues/revenues.component';
-import {OtherComponent} from '../other/other.component';
 
 const routes: Routes = [
   {path: 'shopping', component: ShoppingPageComponent, canActivate: [AuthGuard]},

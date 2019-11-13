@@ -7,7 +7,7 @@ export enum Genre {
   START_TO_SAVE_NOELLA = 'START_TO_SAVE_NOELLA'
 }
 
-export class Other {
+export class Account {
   id: string;
   amount: number;
   genre: Genre;
