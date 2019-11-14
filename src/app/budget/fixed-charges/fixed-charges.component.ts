@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Budget, Genre} from '../budget.model';
 import {StaticDataSource} from '../static.datasource';
 

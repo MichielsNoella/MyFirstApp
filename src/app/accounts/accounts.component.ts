@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {StaticDataSource} from './static.datasource';
-import {Genre, Account, Sum} from './accounts.model';
+import {Account, Genre, Sum} from './accounts.model';
 
 @Component({
   selector: 'app-accounts',
@@ -15,6 +15,7 @@ export class AccountsComponent implements OnInit {
 
   sum$: Observable<Sum>;
   startToSaveNoella: Account[];
+  account: Account;
 
   constructor(private service: StaticDataSource, private authService: AuthService, private router: Router) {
   }
@@ -42,5 +43,9 @@ export class AccountsComponent implements OnInit {
   signOut() {
     this.authService.signOut();
     this.router.navigate(['admin/login']);
+  }
+
+  modifyAccount($event) {
+    this.service.modifyAccount($event);
   }
 }

@@ -12,9 +12,9 @@ import {VisaNoellaPageComponent} from './visa-noella-page/visa-noella-page.compo
 import {FixedChargesComponent} from './fixed-charges/fixed-charges.component';
 import {MonthlyChargesComponent} from './monthly-charges/monthly-charges.component';
 import {MonthlyRevenuesComponent} from './monthly-revenues/monthly-revenues.component';
-import { RevenuesComponent } from './revenues/revenues.component';
-import { MonthlyChargesEditComponent } from './monthly-charges-edit/monthly-charges-edit.component';
-import { MonthlyRevenuesEditComponent } from './monthly-revenues-edit/monthly-revenues-edit.component';
+import {RevenuesComponent} from './revenues/revenues.component';
+import {MonthlyChargesEditComponent} from './monthly-charges-edit/monthly-charges-edit.component';
+import {MonthlyRevenuesEditComponent} from './monthly-revenues-edit/monthly-revenues-edit.component';
 
 @NgModule({
   declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaDannyPageComponent, VisaNoellaPageComponent,

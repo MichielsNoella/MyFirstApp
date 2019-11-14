@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Budget, Genre, Revenues} from '../budget.model';
+import {Component, OnInit} from '@angular/core';
+import {Revenues} from '../budget.model';
 import {StaticDataSource} from '../static.datasource';
 
 @Component({

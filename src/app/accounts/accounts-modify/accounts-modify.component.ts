@@ -1,18 +1,18 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {StaticDataSource} from '../static.datasource';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Subject} from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
 import {Account} from '../accounts.model';
+import {Subject} from 'rxjs';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {StaticDataSource} from '../static.datasource';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-start-to-save-noella-edit',
-  templateUrl: './start-to-save-noella-edit.component.html',
-  styleUrls: ['./start-to-save-noella-edit.component.css']
+  selector: 'app-accounts-modify',
+  templateUrl: './accounts-modify.component.html',
+  styleUrls: ['./accounts-modify.component.css']
 })
-export class StartToSaveNoellaEditComponent implements OnInit {
+export class AccountsModifyComponent implements OnInit {
 
-  @Input() startToSaveNoella: Account;
+  @Input() account: Account;
 
   private success = new Subject<string>();
 
@@ -30,9 +30,9 @@ export class StartToSaveNoellaEditComponent implements OnInit {
 
   ngOnInit() {
     this.changeForm = new FormGroup({
-      amount: new FormControl(this.startToSaveNoella.amount, [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
-      genre: new FormControl(this.startToSaveNoella.genre),
-      id: new FormControl(this.startToSaveNoella.id)
+      amount: new FormControl(this.account.amount, [Validators.required, Validators.required, Validators.pattern(/^[0-9]+(\.[0-9]{1,2})?$/)]),
+      genre: new FormControl(this.account.genre),
+      id: new FormControl(this.account.id)
     });
 
     setTimeout(() => this.staticAlertClosed = true, 20000);
@@ -47,7 +47,8 @@ export class StartToSaveNoellaEditComponent implements OnInit {
     if (this.changeForm.invalid) {
       return;
     }
-    this.service.changeStartToSaveNoella(this.changeForm.value);
+    this.service.modifyAccount(this.changeForm.value);
     this.success.next(`Bedrag gewijzigd`);
   }
+
 }

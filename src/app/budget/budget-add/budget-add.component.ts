@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StaticDataSource} from '../static.datasource';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Budget, Genre} from '../budget.model';
+import {Budget} from '../budget.model';
 
 @Component({
   selector: 'app-budget-add',

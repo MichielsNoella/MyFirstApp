@@ -1,8 +1,8 @@
 <form [formGroup]="budgetForm" (ngSubmit)="onSubmit()">
   <div class="container">
-      <div class="col-sm-1">
-        <h5>Nieuw</h5>
-      </div>
+    <div class="col-sm-1">
+      <h5>Nieuw</h5>
+    </div>
     <br>
 
     <div class="container">
@@ -48,13 +48,17 @@
           </div>
         </div>
         <div class="col-sm-1">
-          <button type="submit" data-toggle="tooltip" data-placement="right" title="Voeg toe" [disabled]="!budgetForm.valid"><i class="fa fa-plus fa-2x"></i></button>
+          <button type="submit" data-toggle="tooltip" data-placement="right" title="Voeg toe"
+                  [disabled]="!budgetForm.valid"><i class="fa fa-plus fa-2x"></i></button>
         </div>
         <div class="col-sm-1">
-          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Home"routerLink="/home/home" ><i class="fa fa-home fa-lg"></i></button>
+          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip"
+                  data-placement="right" title="Home" routerLink="/home/home"><i class="fa fa-home fa-lg"></i></button>
         </div>
         <div class="col-sm-1">
-          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Uitloggen"routerLink="/admin/login" ><i class="fa fa-sign-out fa-lg"></i></button>
+          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip"
+                  data-placement="right" title="Uitloggen" routerLink="/admin/login"><i
+            class="fa fa-sign-out fa-lg"></i></button>
         </div>
       </div>
     </div>

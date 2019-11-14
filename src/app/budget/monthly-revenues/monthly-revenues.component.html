@@ -13,7 +13,7 @@
           <div *ngIf="f.description.invalid && (f.description.dirty || f.description.touched)"
                class="alert alert-danger">
             <div *ngIf="f.description.errors.required">
-             Dit veld is verplicht.
+              Dit veld is verplicht.
             </div>
           </div>
         </div>
@@ -23,22 +23,26 @@
           <div *ngIf="f.amount.invalid && (f.amount.dirty || f.amount.touched)"
                class="alert alert-danger">
             <div *ngIf="f.amount.errors.pattern">
-             Geen karakters toegestaan
+              Geen karakters toegestaan
             </div>
             <div *ngIf="f.amount.errors.required">
-             Bedrag is verplicht
+              Bedrag is verplicht
             </div>
           </div>
         </div>
 
         <div class="col-sm-2">
-          <button type="submit" data-toggle="tooltip" data-placement="right" title="Voeg toe" [disabled]="!monthlyRevenuesForm.valid"><i class="fa fa-plus fa-2x"></i></button>
+          <button type="submit" data-toggle="tooltip" data-placement="right" title="Voeg toe"
+                  [disabled]="!monthlyRevenuesForm.valid"><i class="fa fa-plus fa-2x"></i></button>
         </div>
         <div class="col-sm-2">
-          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Home"routerLink="/home/home" ><i class="fa fa-home fa-lg"></i></button>
+          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip"
+                  data-placement="right" title="Home" routerLink="/home/home"><i class="fa fa-home fa-lg"></i></button>
         </div>
         <div class="col-sm-2">
-          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip" data-placement="right" title="Uitloggen"routerLink="/admin/login" ><i class="fa fa-sign-out fa-lg"></i></button>
+          <button class="btn btn-outline-primary btn-block bg-light font-weight-bold" data-toggle="tooltip"
+                  data-placement="right" title="Uitloggen" routerLink="/admin/login"><i
+            class="fa fa-sign-out fa-lg"></i></button>
         </div>
       </div>
     </div>
