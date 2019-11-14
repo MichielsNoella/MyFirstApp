@@ -12,6 +12,10 @@ export class BudgetListComponent implements OnInit {
   @Input() budgets: Budget[];
   @Output() delete: EventEmitter<string> = new EventEmitter<string>();
 
+  // Pagination parameters.
+  p: number = 1;
+  count: number = 8;
+
   constructor(
     private service: StaticDataSource
   ) {

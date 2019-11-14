@@ -15,6 +15,7 @@ import {MonthlyRevenuesComponent} from './monthly-revenues/monthly-revenues.comp
 import {RevenuesComponent} from './revenues/revenues.component';
 import {MonthlyChargesEditComponent} from './monthly-charges-edit/monthly-charges-edit.component';
 import {MonthlyRevenuesEditComponent} from './monthly-revenues-edit/monthly-revenues-edit.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [BudgetListComponent, BudgetAddComponent, ShoppingPageComponent, VisaDannyPageComponent, VisaNoellaPageComponent,
@@ -24,7 +25,7 @@ import {MonthlyRevenuesEditComponent} from './monthly-revenues-edit/monthly-reve
     BudgetRoutingModule,
     FormsModule,
     DatePickerModule,
-    ReactiveFormsModule, NgbModule
+    ReactiveFormsModule, NgbModule, NgxPaginationModule
   ],
   exports: [
     BudgetListComponent, BudgetAddComponent

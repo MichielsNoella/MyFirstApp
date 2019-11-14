@@ -6,9 +6,7 @@ import {Genre, Sum, SumRevenues} from '../budget/budget.model';
 import {AuthService} from '../auth/auth.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-// TODO overzicht van alle rekeningen (spaarboek, start2save enz)
 
-// TODO pagination
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

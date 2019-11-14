@@ -11,7 +11,7 @@
       <div class="col-sm-1">Verwijder</div>
     </div>
 
-    <li class="list-group-item" *ngFor="let item of budgets">
+    <li class="list-group-item" *ngFor="let item of budgets | paginate: { itemsPerPage: count, currentPage: p }">
       <div class="row justify-content-sm-center">
         <div class="col-sm-6">{{item.description}}</div>
         <div class="col-sm-2"> {{item.amount}}</div>
@@ -23,6 +23,12 @@
         </div>
       </div>
     </li>
+  </div>
+
+  <br>
+  <!--Including the pagination control.-->
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 
 </div>
