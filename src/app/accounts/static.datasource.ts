@@ -12,12 +12,24 @@ export class StaticDataSource {
 
   accountRef: AngularFireList<Account>;
   startToSaveNoellaRef: AngularFireList<Account>;
+  startToSaveDannyRef: AngularFireList<Account>;
+  startToSaveRef: AngularFireList<Account>;
+  savingAccountRef: AngularFireList<Account>;
   newAmount: string;
 
   constructor(private firebasedb: AngularFireDatabase) {
     this.accountRef = this.firebasedb.list('accounts');
     this.startToSaveNoellaRef = this.firebasedb.list('accounts', ref => {
       return ref.orderByChild('genre').equalTo(Genre.START_TO_SAVE_NOELLA);
+    });
+    this.startToSaveDannyRef = this.firebasedb.list('accounts', ref => {
+      return ref.orderByChild('genre').equalTo(Genre.START_TO_SAVE_DANNY);
+    });
+    this.startToSaveRef = this.firebasedb.list('accounts', ref => {
+      return ref.orderByChild('genre').equalTo(Genre.START_TO_SAVE);
+    });
+    this.savingAccountRef = this.firebasedb.list('accounts', ref => {
+      return ref.orderByChild('genre').equalTo(Genre.SAVING_ACCOUNT);
     });
   }
 
@@ -33,6 +45,36 @@ export class StaticDataSource {
 
   getStartToSaveNoellaList() {
     return this.startToSaveNoellaRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
+  }
+
+  getStartToSaveDannyList() {
+    return this.startToSaveDannyRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
+  }
+
+  getStartToSaveList() {
+    return this.startToSaveRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({id: c.payload.key, ...c.payload.val()})
+        )
+      )
+    );
+  }
+
+  getSavingAccountList() {
+    return this.savingAccountRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({id: c.payload.key, ...c.payload.val()})

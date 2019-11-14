@@ -34,5 +34,55 @@
     </div>
     <br>
 
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-4">
+        <button class="btn btn-lg btn-outline-primary btn-block bg-warning font-weight-bold">
+          StartToSaveDanny
+        </button>
+      </div>
+      <div class="col-sm-8">
+        <li class="list-group-item" *ngFor="let item of startToSaveDanny">
+          <app-accounts-modify [account]="item"></app-accounts-modify>
+        </li>
+      </div>
+    </div>
+    <br>
+
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-4">
+        <button class="btn btn-lg btn-outline-primary btn-block bg-warning font-weight-bold">
+          StartToSave
+        </button>
+      </div>
+      <div class="col-sm-8">
+        <li class="list-group-item" *ngFor="let item of startToSave">
+          <app-accounts-modify [account]="item"></app-accounts-modify>
+        </li>
+      </div>
+    </div>
+    <br>
+
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-4">
+        <button class="btn btn-lg btn-outline-primary btn-block bg-warning font-weight-bold">
+          Spaarboek
+        </button>
+      </div>
+      <div class="col-sm-8">
+        <li class="list-group-item" *ngFor="let item of savingAccount">
+          <app-accounts-modify [account]="item"></app-accounts-modify>
+        </li>
+      </div>
+    </div>
+    <br>
+
+    <div class="row justify-content-sm-center">
+      <div class="col-sm"><label class="btn btn-outline-primary btn-block disabled font-weight-bold">
+        Totaal</label>
+      </div>
+      <div class="col-sm-8"> {{ (sum$ | async)?.total | currency:"EUR":"symbol":"2.2-2" }}</div>
+    </div>
+    <br>
+
   </div>
 </div>
